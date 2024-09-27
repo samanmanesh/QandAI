@@ -1,18 +1,55 @@
 'use server';
+import anthropic  from "@/app/lib/aiClient";
+
 
 interface Params {
-  prompt: string;
+  data: string;
+  file?: File;
 }
 
-export async function generateQA( { prompt, file }: Params ): Promise<string>{
+
+type Response = {
+  question: string;
+  options: string[];
+  answer: string;
+};
+
+export async function generateQA( { data, file }: Params ): Promise<string> {
   // This is a placeholder for the generated QA 
-  let generatedQA = "This is a placeholder for the generated QA + prompt: " + prompt;  
+  
+  const prompt =  `Generate 3-5 multiple choice questions based on the following text. Each question should have 4 options, with one correct answer. Format the output as a JSON array of objects, where each object represents a question and has the following structure:
+
+{
+  "question": "The text of the question",
+  "options": ["Option A", "Option B", "Option C", "Option D"],
+  "answer": "The correct option"
+}
+
+Text to base the questions on:
+
+${data}
+
+Ensure that the questions cover key points from the text and that the options are plausible but clearly distinguishable. The correct answer should be included among the options.`;
+
+  const generatedQA = await anthropic.messages.create({
+    model: "claude-3-5-sonnet-20240620",
+    max_tokens: 1024,
+    messages: [{ role: "user", content: prompt }],
+  });
+
+  console.log(generatedQA);
+  
+  
+  
+
+
+
+  
+  
+
 
   //todo handling file latter with third party library(using relative action) based on the file type
 
-  // passing the prompt to the AI model
 
-  
-  // return { prompt: "This is a placeholder for the generated QA", file: file };
-  return generatedQA;
+  return "check the console for the generated QA";
 }

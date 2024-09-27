@@ -14,7 +14,7 @@ const QAGeneratorForm = () => {
   try {
     const prompt = (document.getElementById("text") as HTMLTextAreaElement)
       .value;
-    const res = await generateQA({ prompt });
+    const res = await generateQA({ data: prompt });
     console.log(res);
     setResult(res);
   }
