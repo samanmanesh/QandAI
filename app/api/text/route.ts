@@ -7,7 +7,8 @@ export async function POST(request: Request): Promise<Response> {
 
   try {
     const result = await generateQA(text);
-    return NextResponse.json({ message: result });
+    console.log("result in api/text", result);
+    return NextResponse.json({ result });
   } catch (error) {
     return NextResponse.json(
       { error: "Failed to generate Q&A" },

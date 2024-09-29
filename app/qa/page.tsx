@@ -5,10 +5,48 @@ import React, { useState } from "react";
 
 type Props = {};
 
+type Question = {
+  question: string;
+  options: string[];
+  answer: string;
+};
+
 const QAPage = (props: Props) => {
   const [inputType, setInputType] = useState("text");
   const [inputValue, setInputValue] = useState("");
-  const [answer, setAnswer] = useState("");
+  // const [questions, setQuestions] = useState([] as Question[]);
+  const [questions, setQuestions] = useState<Question[]>([
+    {
+        "question": "What is the composition of the encoder?",
+        "options": [
+            "The encoder is composed of 4 identical layers",
+            "The encoder is composed of 8 identical layers",
+            "The encoder is composed of 6 identical layers",
+            "The encoder is composed of 2 identical layers"
+        ],
+        "answer": "The encoder is composed of 6 identical layers"
+    },
+    {
+        "question": "What are the two sub-layers in each encoder layer?",
+        "options": [
+            "Multi-head self-attention mechanism and a position-wise fully connected feed-forward network",
+            "Residual connection and layer normalization",
+            "Embedding layers and decoder sub-layers",
+            "Convolutional layers and pooling layers"
+        ],
+        "answer": "Multi-head self-attention mechanism and a position-wise fully connected feed-forward network"
+    },
+    {
+        "question": "What is the purpose of the residual connections and layer normalization in the model?",
+        "options": [
+            "To facilitate the residual connections and ensure the outputs have the same dimension as the input",
+            "To improve the training speed and convergence of the model",
+            "To prevent overfitting and improve the model's generalization",
+            "All of the above"
+        ],
+        "answer": "To facilitate the residual connections and ensure the outputs have the same dimension as the input"
+    }
+]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -32,7 +70,8 @@ const QAPage = (props: Props) => {
       }
 
       const data = await response.json();
-      return data.message;
+      console.log("Data:", data);
+      return data.result.questions as Question[];
     } catch (err) {
       console.error("Error:", err);
       setError(err);
@@ -43,9 +82,10 @@ const QAPage = (props: Props) => {
   };
 
   const handleSubmit = async () => {
-    const answer = await generateQA();
-    console.log("Answer:", answer);
-    setAnswer(answer);
+    const questions = await generateQA();
+    console.log("Questions:", questions);
+    if (!questions) return;
+    setQuestions(questions);
   };
 
   return (
@@ -66,7 +106,19 @@ const QAPage = (props: Props) => {
 
       {isLoading && <div>Loading...</div>}
       {error && <div>Error: {error}</div>}
-      {answer && <div>{answer}</div>}
+      {questions && <div>{questions.map(
+        (q, i) => (
+          <div key={i} className="border p-2 rounded-md">
+            <div>{q.question}</div>
+            <div>
+              {q.options.map((o, j) => (
+                <div key={j}>{o}</div>
+              ))}
+            </div>
+            <div>Answer: {q.answer}</div>
+          </div>
+        )
+      )}</div>}
     </div>
   );
 };
