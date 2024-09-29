@@ -6,11 +6,7 @@ interface Params {
   file?: File;
 }
 
-type Response = {
-  question: string;
-  options: string[];
-  answer: string;
-};
+
 
 export async function generateQA({ data, file }: Params): Promise<string> {
   // This is a placeholder for the generated QA
