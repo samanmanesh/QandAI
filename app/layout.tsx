@@ -34,33 +34,59 @@ export default function RootLayout({
   );
 }
 
-// The project structure is as follows:
 // project-root/
 // ├── app/
 // │   ├── api/
 // │   │   └── qa/
 // │   │       ├── text/
-// │   │       │   └── route.js
+// │   │       │   └── route.ts
 // │   │       ├── pdf/
-// │   │       │   └── route.js
+// │   │       │   └── route.ts
 // │   │       └── image/
-// │   │           └── route.js
+// │   │           └── route.ts
 // │   ├── qa/
-// │   │   ├── page.js
-// │   │   ├── layout.js
+// │   │   ├── page.tsx
+// │   │   ├── layout.tsx
 // │   │   └── components/
-// │   │       ├── TextInput.js
-// │   │       ├── FileUpload.js
-// │   │       └── QuestionForm.js
-// │   └── layout.js
+// │   │       ├── TextInput.tsx
+// │   │       ├── FileUpload.tsx
+// │   │       └── QuestionForm.tsx
+// │   └── layout.tsx
+// ├── components/
+// │   ├── ui/
+// │   │   ├── Button.tsx
+// │   │   ├── Input.tsx
+// │   │   ├── Select.tsx
+// │   │   ├── Card.tsx
+// │   │   ├── Modal.tsx
+// │   │   └── ...
+// │   ├── layout/
+// │   │   ├── Header.tsx
+// │   │   ├── Footer.tsx
+// │   │   ├── Sidebar.tsx
+// │   │   └── ...
+// │   └── common/
+// │       ├── ErrorBoundary.tsx
+// │       ├── LoadingSpinner.tsx
+// │       ├── Tooltip.tsx
+// │       └── ...
 // ├── lib/
-// │   ├── anthropic.js
-// │   ├── pdfParser.js
-// │   └── imageProcessor.js
+// │   ├── anthropic.ts
+// │   ├── pdfParser.ts
+// │   └── imageProcessor.ts
 // ├── utils/
-// │   ├── apiHelpers.js
-// │   └── validators.js
+// │   ├── apiHelpers.ts
+// │   └── validators.ts
 // ├── hooks/
-// │   └── useQA.js
-// └── config/
-//     └── constants.js
+// │   ├── useQA.ts
+// │   └── useMediaQuery.ts
+// ├── config/
+// │   └── constants.ts
+// ├── types/
+// │   ├── qa.ts
+// │   ├── api.ts
+// │   └── components.ts
+// ├── styles/
+// │   ├── globals.css
+// │   └── variables.css
+// └── tsconfig.json

@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { InputType, QAResponse } from "@/types/qa";
+import { InputType, QAResponse } from "../types/qa";
 
 export default function useQA() {
   const [isLoading, setIsLoading] = useState(false);
