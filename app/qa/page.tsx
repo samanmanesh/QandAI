@@ -54,7 +54,7 @@ const QAPage = () => {
 
   return (
     <div className="h-full w-full  flex flex-col gap-3 items-center justify-center">
-      <h1 className="text-4xl font-bold">QandAI</h1>
+      {/* <h1 className="text-4xl font-bold">QandAI</h1>
       <textarea
         className="border rounded bg-slate-100 p-2 w-96 min-h-48 "
         value={inputValue}
@@ -84,7 +84,7 @@ const QAPage = () => {
             </div>
           ))}
         </div>
-      )}
+      )} */}
     </div>
   );
 };
