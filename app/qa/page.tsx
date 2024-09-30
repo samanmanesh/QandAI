@@ -2,20 +2,22 @@
 
 import React, { useState } from "react";
 import useQA from "../hooks/useQA";
+import { InputType, QAResponse } from "../types/qa";
+import { Input } from "postcss";
 
 type Props = {};
 
-type Question = {
-  question: string;
-  options: string[];
-  answer: string;
-};
+// type Question = {
+//   question: string;
+//   options: string[];
+//   answer: string;
+// };
 
 const QAPage = (props: Props) => {
-  const [inputType, setInputType] = useState("text");
+  const [inputType, setInputType] = useState<InputType>("text");
   const [inputValue, setInputValue] = useState("");
   // const [questions, setQuestions] = useState([] as Question[]);
-  const [questions, setQuestions] = useState<Question[]>([
+  const [questions, setQuestions] = useState<QAResponse[]>([
     {
       question: "What is the composition of the encoder?",
       options: [
@@ -51,71 +53,6 @@ const QAPage = (props: Props) => {
     },
   ]);
   const { generateQA, isLoading, error } = useQA();
-  //   [
-  //     {
-  //         "question": "What type of deformity can result from zygomatic fractures?",
-  //         "options": [
-  //             "Flattening of the malar eminence",
-  //             "Widening of the arch",
-  //             "Orbital dystopia",
-  //             "All of the above"
-  //         ],
-  //         "answer": "All of the above"
-  //     },
-  //     {
-  //         "question": "What is the potential functional impairment caused by fractures of the zygomatic arch?",
-  //         "options": [
-  //             "Impingement on the temporalis muscle",
-  //             "Obstruction of the path of the coronoid",
-  //             "Trismus",
-  //             "All of the above"
-  //         ],
-  //         "answer": "All of the above"
-  //     },
-  //     {
-  //         "question": "What type of nerve injury is associated with zygomatic fractures?",
-  //         "options": [
-  //             "Paresthesia or dysesthesia of the first division of the trigeminal nerve (V1)",
-  //             "Paresthesia or dysesthesia of the second division of the trigeminal nerve (V2)",
-  //             "Paresthesia or dysesthesia of the third division of the trigeminal nerve (V3)",
-  //             "None of the above"
-  //         ],
-  //         "answer": "Paresthesia or dysesthesia of the second division of the trigeminal nerve (V2)"
-  //     }
-  // ]
-  // const [isLoading, setIsLoading] = useState(false);
-  // const [error, setError] = useState(null);
-
-  // const generateQA = async () => {
-  //   setIsLoading(true);
-  //   setError(null);
-  //   try {
-  //     let response: Response | null = null;
-  //     if (inputType === "text") {
-  //       response = await fetch("/api/text", {
-  //         method: "POST",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //         body: JSON.stringify({ text: inputValue }),
-  //       });
-  //     }
-
-  //     if (!response) {
-  //       throw new Error("Network response was not ok");
-  //     }
-
-  //     const data = await response.json();
-  //     console.log("Data:", data);
-  //     return data.result.questions as Question[];
-  //   } catch (err) {
-  //     console.error("Error:", err);
-  //     setError(err);
-  //     return null;
-  //   } finally {
-  //     setIsLoading(false);
-  //   }
-  // };
 
   const handleSubmit = async () => {
     const questions = await generateQA(inputType, inputValue);

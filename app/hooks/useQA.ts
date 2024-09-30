@@ -1,13 +1,15 @@
+"use client";
 import { useState } from "react";
-// import { Question } from "../types";
-
+import { InputType, QAResponse } from "../types/qa";
 
 export default function useQA() {
-  
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const generateQA = async (type: string, value:string )  => {
+  const generateQA = async (
+    type: InputType,
+    value: string
+  ): Promise<QAResponse[] | null> => {
     setIsLoading(true);
     setError(null);
     try {
@@ -28,7 +30,7 @@ export default function useQA() {
 
       const data = await response.json();
       console.log("Data:", data);
-      return data.result.questions as Question[];
+      return data.result.questions as QAResponse[];
     } catch (err) {
       console.error("Error:", err);
       setError(err);
@@ -43,5 +45,4 @@ export default function useQA() {
     error,
     generateQA,
   };
-
 }
