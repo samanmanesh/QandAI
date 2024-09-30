@@ -24,12 +24,12 @@ Ensure that the questions cover key points from the text and that the options ar
     max_tokens: 1024,
     messages: [
       { role: "user", content: prompt },
-      { role: "assistant", content: "{\"questions\":" },
+      { role: "assistant", content: '{"questions":' },
     ],
   });
 
   console.log("response", response);
   return response.content[0].type === "text"
-    ? JSON.parse("{\"questions\":" + response.content[0].text)
+    ? JSON.parse('{"questions":' + response.content[0].text)
     : null;
 }

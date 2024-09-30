@@ -3,17 +3,8 @@
 import React, { useState } from "react";
 import useQA from "../hooks/useQA";
 import { InputType, QAResponse } from "../types/qa";
-import { Input } from "postcss";
 
-type Props = {};
-
-// type Question = {
-//   question: string;
-//   options: string[];
-//   answer: string;
-// };
-
-const QAPage = (props: Props) => {
+const QAPage = () => {
   const [inputType, setInputType] = useState<InputType>("text");
   const [inputValue, setInputValue] = useState("");
   // const [questions, setQuestions] = useState([] as Question[]);
