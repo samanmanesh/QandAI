@@ -5,6 +5,7 @@ import useQA from "../hooks/useQA";
 import { InputType, QAResponse } from "../types/qa";
 import Textarea from "./components/Textarea";
 import Button from "../components/ui/Button";
+import MagicIcon from "../assets/MagicIcon";
 
 const QAPage = () => {
   const [inputType, setInputType] = useState<InputType>("text");
@@ -61,16 +62,21 @@ const QAPage = () => {
     <div className="h-full w-2/4 flex flex-col gap-3 justify-center items-center ">
       <div className=" w-2/3 min-w-12 flex flex-col gap-6">
         <section className=" flex flex-col gap-2  ">
-          <h1 className="text-3xl font-medium">
+          <h1 className="text-4xl font-medium">
             Welcome to
-            <span className="text-3xl font-bold"> QandAI, </span>
+            <span className="text-4xl font-semibold"> QandAI, </span>
           </h1>
           <p className="text-2xl font-medium text-left">
             Drop your text below and watch questions come to life!
           </p>
         </section>
         <Textarea value={inputValue} onChange={setInputValue} />
-        <Button type="generate" onClick={handleSubmit}>
+        <Button
+          type="generate"
+          onClick={handleSubmit}
+          className="mt-6 self-center w-full"
+          icon={<MagicIcon />}
+        >
           Generate
         </Button>
       </div>
