@@ -18,14 +18,17 @@ export default function Page({ params }: { params: { id: string } }) {
 
   if (!questions) return <div>Not Found</div>;
 
-//todo: here we use the animated pagination to show each question one by one
-
+  //todo: here we use the animated pagination to show each question one by one
 
   return (
-    <div className="h-full w-full md:w-2/4 flex flex-col gap-3 justify-center items-center   ">
-      {questions.map((question) => (
-        <Card key={question.question} {...question} />
+    <div className="h-full w-full md:w-2/4 flex  gap-3 justify-center items-center   ">
+      {questions.map((question, index) => (
+        <Card key={index} data={question} />
       ))}
+      {/* {questions.map((question, index) => (
+        
+        
+      ))} */}
     </div>
   );
 }
