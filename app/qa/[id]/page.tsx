@@ -3,7 +3,7 @@ import Card from "@/app/components/ui/Card";
 import { useQAStore } from "@/app/store/qaStore";
 import { QAResponse } from "@/app/types/qa";
 import React, { useEffect, useState } from "react";
-import { easeInOut, motion,} from "framer-motion";
+import { easeInOut, motion } from "framer-motion";
 
 // export default function Page({ params }: { params: { id: string } }) {
 //   // getting the data with id from the params from store
@@ -49,7 +49,7 @@ export default function Page({ params }: { params: { id: string } }) {
     setDirection(-1);
     setCurrentIndex((prev) => (prev === 0 ? questions.length - 1 : prev - 1));
   };
-  
+
   const handleSelectQuestion = (index: number) => {
     setDirection(index > currentIndex ? 1 : -1);
     setCurrentIndex(index);
@@ -63,26 +63,25 @@ export default function Page({ params }: { params: { id: string } }) {
     center: {
       x: 0,
       opacity: 1,
-      transition: { duration: 0.5, delay: 0.1, ease:"easeInOut",  },
-
+      transition: { duration: 0.5, delay: 0.1, ease: "easeInOut" },
     },
     exit: {
       x: direction === 1 ? -1000 : 1000,
       opacity: 0,
-      transition: { duration: 0.5, delay: 0.1 ,ease:"easeInOut", },
+      transition: { duration: 0.5, delay: 0.1, ease: "easeInOut" },
     },
   };
 
   return (
     <div className="h-full w-full md:w-2/4 flex flex-col items-center justify-center">
-      <div className="relative w-full  h-96 flex items-center justify-center overflow-hidden">
+      <div className="relative w-full h-1/2 flex items-center justify-center overflow-hidden">
         <motion.div
           key={currentIndex}
           initial="enter"
           animate="center"
           exit="exit"
           variants={variants}
-          className="absolute w-full"
+          className="absolute w-2/3"
         >
           <Card data={questions[currentIndex]} />
         </motion.div>

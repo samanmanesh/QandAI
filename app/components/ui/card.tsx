@@ -40,7 +40,7 @@ const fadeInVariants = {
 const Card = ({ data }: { data: QAResponse }) => {
   return (
     <motion.div
-      className="p-4 "
+      className="p-4"
       initial="hidden"
       animate="visible"
       exit="hidden"
@@ -56,7 +56,7 @@ const Card = ({ data }: { data: QAResponse }) => {
     >
       {/* Animate the question */}
       <motion.h1
-        className="text-3xl font-bold mb-4"
+        className="text-2xl font-bold mb-8 "
         variants={fadeInVariants}
         // variants={headerVariants}
         custom={0.5} // delay for h1
@@ -68,18 +68,18 @@ const Card = ({ data }: { data: QAResponse }) => {
       {data.options.map((option, index) => (
         <motion.p
           key={index}
-          className="mb-8 text-lg font-medium flex items-center gap-3"
+          className="mb-6 text-lg font-medium flex items-center gap-3"
           variants={fadeInVariants}
           custom={0.2 + index * 0.1} // incremental delay for options
         >
-          <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
+          <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" className="appearance-none  bg-white w-4 h-4 shadow-sm rounded-md  outline outline-1 " />
           {option}
         </motion.p>
       ))}
 
       {/* Animate the answer */}
       <motion.p
-        className="text-sm text-gray-500 mt-4"
+        className="text-sm text-gray-500 mt-14"
         variants={fadeInVariants}
         custom={0.4} // delay for the answer
       >
