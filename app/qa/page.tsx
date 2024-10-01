@@ -8,7 +8,7 @@ import Button from "../components/ui/Button";
 import MagicIcon from "../assets/MagicIcon";
 
 const QAPage = () => {
-  const [inputType, setInputType] = useState<InputType>("text");
+  const [inputType] = useState<InputType>("text");
   const [inputValue, setInputValue] = useState("");
   // const [questions, setQuestions] = useState([] as Question[]);
   const [questions, setQuestions] = useState<QAResponse[]>([
