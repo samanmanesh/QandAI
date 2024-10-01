@@ -8,7 +8,7 @@ const Sidebar = () => {
   console.log(path);
 
   return (
-    <div className="h-full hidden md:flex flex-col md:w-1/4 p-4   ">
+    <div className="h-full hidden md:flex flex-col md:w-1/4 p-4    ">
       <h1 className="text-4xl font-medium  ml-6 mt-2 ">Q&Ai</h1>
       <div className="w-fit mt-60 mx-auto ">
         {!path.match("/qa") && (

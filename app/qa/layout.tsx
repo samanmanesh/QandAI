@@ -3,7 +3,7 @@ import Sidebar from "../components/layout/Sidebar";
 
 const QALayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <section className=" h-full flex    ">
+    <section className=" h-full flex w-full   ">
       <Sidebar />
       {children}
     </section>
