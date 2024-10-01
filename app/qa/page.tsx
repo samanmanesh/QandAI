@@ -53,7 +53,17 @@ const QAPage = () => {
   };
 
   return (
-    <div className="h-full w-full  flex flex-col gap-3 items-center justify-center">
+    <div className="h-full w-full flex flex-col gap-3 items-center justify-center ">
+      <section className=" flex flex-col gap-2 justify-start ">
+        <h1 className="text-3xl font-medium">
+          Welcome to
+          <span className="text-3xl font-bold"> QandAI, </span>
+        </h1>
+        <p className="text-2xl font-medium text-left">
+          Drop your text below and watch questions come to life!
+        </p>
+      </section>
+
       {/* <h1 className="text-4xl font-bold">QandAI</h1>
       <textarea
         className="border rounded bg-slate-100 p-2 w-96 min-h-48 "
