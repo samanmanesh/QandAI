@@ -18,7 +18,7 @@ const Sidebar = (props: Props) => {
 
 
   return (
-    <div className="h-full w-1/3 p-4  flex flex-col ">
+    <div className="h-full w-1/4 p-4  flex flex-col ">
       <h1 className="text-3xl font-medium drop-shadow ml-6 mt-2 ">Q&Ai</h1>
       <div className="w-fit mt-60 mx-auto ">
         {!path.match('/qa')  && (

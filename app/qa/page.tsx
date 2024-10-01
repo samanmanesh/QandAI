@@ -3,6 +3,8 @@
 import React, { useState } from "react";
 import useQA from "../hooks/useQA";
 import { InputType, QAResponse } from "../types/qa";
+import Textarea from "./components/Textarea";
+import Button from "../components/ui/Button";
 
 const QAPage = () => {
   const [inputType, setInputType] = useState<InputType>("text");
@@ -48,21 +50,30 @@ const QAPage = () => {
   const handleSubmit = async () => {
     const questions = await generateQA(inputType, inputValue);
     console.log("Questions:", questions);
+
+    if (!isLoading && !error) setInputValue("");
+
     if (!questions) return;
     setQuestions(questions);
   };
 
   return (
-    <div className="h-full w-full flex flex-col gap-3 items-center justify-center ">
-      <section className=" flex flex-col gap-2 justify-start ">
-        <h1 className="text-3xl font-medium">
-          Welcome to
-          <span className="text-3xl font-bold"> QandAI, </span>
-        </h1>
-        <p className="text-2xl font-medium text-left">
-          Drop your text below and watch questions come to life!
-        </p>
-      </section>
+    <div className="h-full w-2/4 flex flex-col gap-3 justify-center items-center ">
+      <div className=" w-2/3 min-w-12 flex flex-col gap-6">
+        <section className=" flex flex-col gap-2  ">
+          <h1 className="text-3xl font-medium">
+            Welcome to
+            <span className="text-3xl font-bold"> QandAI, </span>
+          </h1>
+          <p className="text-2xl font-medium text-left">
+            Drop your text below and watch questions come to life!
+          </p>
+        </section>
+        <Textarea value={inputValue} onChange={setInputValue} />
+        <Button type="generate" onClick={handleSubmit}>
+          Generate
+        </Button>
+      </div>
 
       {/* <h1 className="text-4xl font-bold">QandAI</h1>
       <textarea
