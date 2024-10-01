@@ -20,7 +20,7 @@ const Textarea = ({ value, onChange }: TextareaProps) => {
   // const [inputValue, setInputValue] = useState("");
   return (
     <textarea
-      className="w-full aspect-video  resize-none rounded-md overflow-auto outline-none p-4 shadow-sm bg-gradient-to-tr from-[#221c2cfd] via-[#1b1623f1] to-80%  to-[#1b1623d9]   text-white text-base font-medium tracking-wide  "
+      className="w-full aspect-[16/7]  resize-none rounded-xl overflow-auto outline-none p-4 shadow-sm bg-gradient-to-tr from-[#221c2cfd] via-[#1b1623f1] to-80%  to-[#1b1623d9]   text-white text-base font-medium tracking-wide  "
       onChange={(e) => {
         onChange(e.target.value);
       }}

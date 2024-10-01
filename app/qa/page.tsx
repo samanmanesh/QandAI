@@ -59,8 +59,8 @@ const QAPage = () => {
   };
 
   return (
-    <div className="h-full w-2/4 flex flex-col gap-3 justify-center items-center ">
-      <div className=" w-2/3 min-w-12 flex flex-col gap-6">
+    <div className="h-full w-full md:w-2/4 flex flex-col gap-3 justify-center items-center   ">
+      <div className="min-w-12 flex flex-col gap-12  w-[85%] ">
         <section className=" flex flex-col gap-2  ">
           <h1 className="text-4xl font-medium">
             Welcome to
@@ -74,7 +74,7 @@ const QAPage = () => {
         <Button
           type="generate"
           onClick={handleSubmit}
-          className="mt-6 self-center w-full"
+          className="mt-10 self-center w-full"
           icon={<MagicIcon />}
         >
           Generate
