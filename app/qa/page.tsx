@@ -6,6 +6,10 @@ import { InputType, QAResponse } from "../types/qa";
 import Textarea from "./components/Textarea";
 import Button from "../components/ui/Button";
 import MagicIcon from "../assets/MagicIcon";
+import { generateId } from "../utils/generateId";
+import { useStore } from "zustand";
+import { useQAStore } from "../store/qaStore";
+import { useRouter } from "next/navigation";
 
 const QAPage = () => {
   const [inputType] = useState<InputType>("text");
@@ -47,15 +51,65 @@ const QAPage = () => {
     },
   ]);
   const { generateQA, isLoading, error } = useQA();
+  const router = useRouter();
+  const setResult = useQAStore((state) => state.setQuestions);
+
 
   const handleSubmit = async () => {
-    const questions = await generateQA(inputType, inputValue);
+    // const questions = await generateQA(inputType, inputValue);
+    //!tmp
+    const questions = [
+      {
+        question: "What is the composition of the encoder?",
+        options: [
+          "The encoder is composed of 4 identical layers",
+          "The encoder is composed of 8 identical layers",
+          "The encoder is composed of 6 identical layers",
+          "The encoder is composed of 2 identical layers",
+        ],
+        answer: "The encoder is composed of 6 identical layers",
+      },
+      {
+        question: "What are the two sub-layers in each encoder layer?",
+        options: [
+          "Multi-head self-attention mechanism and a position-wise fully connected feed-forward network",
+          "Residual connection and layer normalization",
+          "Embedding layers and decoder sub-layers",
+          "Convolutional layers and pooling layers",
+        ],
+        answer:
+          "Multi-head self-attention mechanism and a position-wise fully connected feed-forward network",
+      },
+      {
+        question:
+          "What is the purpose of the residual connections and layer normalization in the model?",
+        options: [
+          "To facilitate the residual connections and ensure the outputs have the same dimension as the input",
+          "To improve the training speed and convergence of the model",
+          "To prevent overfitting and improve the model's generalization",
+          "All of the above",
+        ],
+        answer:
+          "To facilitate the residual connections and ensure the outputs have the same dimension as the input",
+      },
+    ]
+
     console.log("Questions:", questions);
+    
+
 
     if (!isLoading && !error) setInputValue("");
 
     if (!questions) return;
     setQuestions(questions);
+    //generate id 
+    const id = generateId();
+    // set questions in store
+    // useQAStore((state) => state.setQuestions(id, questions));
+    setResult(id, questions);
+
+
+    router.push(`/qa/${id}`);
   };
 
   return (

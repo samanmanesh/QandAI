@@ -1,10 +1,15 @@
+import { QAResponse } from '@/app/types/qa'
 import React from 'react'
 
-type Props = {}
 
-const Card = (props: Props) => {
+
+
+const Card = (data: QAResponse) => {
+  console.log(">>",data)
   return (
-    <div>Card</div>
+    <div className='outline rounded'>
+      {data.question}
+    </div>
   )
 }
 
