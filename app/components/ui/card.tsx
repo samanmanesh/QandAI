@@ -18,7 +18,7 @@
 // };
 
 // export default Card;
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { QAResponse } from "@/app/types/qa";
 
@@ -38,9 +38,10 @@ const fadeInVariants = {
 // };
 
 const Card = ({ data }: { data: QAResponse }) => {
+  const [showAnswer, setShowAnswer] = useState(false);
   return (
     <motion.div
-      className="p-4 space-y-4"
+      className="p-6 space-y-4 flex flex-col  rounded-lg"
       initial="hidden"
       animate="visible"
       exit="hidden"
@@ -80,18 +81,27 @@ const Card = ({ data }: { data: QAResponse }) => {
             value="Bike"
             className="appearance-none  bg-white w-4 h-4 shadow-sm rounded-md  outline outline-1 flex-shrink-0 hover:bg-slate-950 cursor-pointer hover:transition-all hover:ease-in-out ease-linear transition-all hover:scale-110 "
           />
-          <span className="  hover:text-blue-600">{option}</span>
+          <span className="">{option}</span>
         </motion.p>
       ))}
+      {/* Show answer button */}
+      <motion.button
+        className="font-semibold"
+        onClick={() => setShowAnswer(!showAnswer)} // Toggle the answer
+      >
+        {showAnswer ? "" : "Click to see answer"}
+      </motion.button>
 
       {/* Animate the answer */}
-      <motion.p
-        className="text-sm text-gray-500 mt-14"
-        variants={fadeInVariants}
-        custom={0.4} // delay for the answer
-      >
-        Answer: {data.answer}
-      </motion.p>
+      {showAnswer && (
+        <motion.p
+          className=" mt-auto"
+          variants={fadeInVariants}
+          custom={0.4} // delay for the answer
+        >
+          Answer: {data.answer}
+        </motion.p>
+      )}
     </motion.div>
   );
 };

@@ -81,7 +81,7 @@ export default function Page({ params }: { params: { id: string } }) {
           animate="center"
           exit="exit"
           variants={variants}
-          className="absolute w-2/3"
+          className="absolute h-full max-w-[40rem]"
         >
           <Card data={questions[currentIndex]} />
         </motion.div>
