@@ -40,7 +40,7 @@ const fadeInVariants = {
 const Card = ({ data }: { data: QAResponse }) => {
   return (
     <motion.div
-      className="p-4"
+      className="p-4 space-y-4"
       initial="hidden"
       animate="visible"
       exit="hidden"
@@ -68,12 +68,19 @@ const Card = ({ data }: { data: QAResponse }) => {
       {data.options.map((option, index) => (
         <motion.p
           key={index}
-          className="mb-6 text-lg font-medium flex items-center gap-3"
+          className=" text-lg font-medium flex items-center gap-3 cursor-pointer rounded-md p-2"
           variants={fadeInVariants}
           custom={0.2 + index * 0.1} // incremental delay for options
+          onClick={() => console.log("Clicked option")}
         >
-          <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" className="appearance-none  bg-white w-4 h-4 shadow-sm rounded-md  outline outline-1 " />
-          {option}
+          <input
+            type="checkbox"
+            id="vehicle1"
+            name="vehicle1"
+            value="Bike"
+            className="appearance-none  bg-white w-4 h-4 shadow-sm rounded-md  outline outline-1 flex-shrink-0 hover:bg-slate-950 cursor-pointer hover:transition-all hover:ease-in-out ease-linear transition-all hover:scale-110 "
+          />
+          <span className="  hover:text-blue-600">{option}</span>
         </motion.p>
       ))}
 
