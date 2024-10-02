@@ -4,6 +4,8 @@ import { useQAStore } from "@/app/store/qaStore";
 import { QAResponse } from "@/app/types/qa";
 import React, { useEffect, useState } from "react";
 import { easeInOut, motion } from "framer-motion";
+import NextIcon from "@/app/assets/NextIcon";
+import PrevIcon from "@/app/assets/PrevIcon";
 
 // export default function Page({ params }: { params: { id: string } }) {
 //   // getting the data with id from the params from store
@@ -87,41 +89,44 @@ export default function Page({ params }: { params: { id: string } }) {
         </motion.div>
       </div>
 
+      <section className="flex flex-row-reverse justify-around  gap-4 w-full">
       {/* Pagination Controls */}
       <div className="flex gap-4 mt-4">
         <button
-          className="p-2 bg-blue-500 text-white rounded"
+          className="px-4 py-2 bg-black text-white rounded-full  hover:scale-105 transform transition-all"
           onClick={handlePrev}
           disabled={questions.length === 1 || currentIndex === 0}
         >
-          Prev
+          <PrevIcon />
         </button>
         <button
-          className="p-2 bg-blue-500 text-white rounded"
+          className="px-4 py-2 bg-black text-white rounded-full hover:scale-105 transform transition-all"
           onClick={handleNext}
           disabled={
             questions.length === 1 || currentIndex === questions.length - 1
           }
         >
-          Next
+          <NextIcon />
         </button>
       </div>
       {/* Question Numbers */}
-      <div className="flex gap-2 mt-4">
+      <div className="flex gap-1 mt-4">
         {questions.map((_, index) => (
           <button
             key={index}
-            className={`p-2 rounded ${
+            className={`p-0.5 w-7 h-7 font-semibold text rounded-full ${
               currentIndex === index
-                ? "bg-blue-600 text-white"
-                : "bg-gray-300 text-black"
-            }`}
+                ? "bg-indigo-950 text-white scale-105"
+                : "bg- text-black scale-75 hover:scale-125"
+            } hover:bg-indigo-950 hover:text-white  transform transition-all
+                `}
             onClick={() => handleSelectQuestion(index)}
           >
             {index + 1}
           </button>
         ))}
       </div>
+    </section>
     </div>
   );
 }
