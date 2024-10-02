@@ -39,9 +39,10 @@ const fadeInVariants = {
 
 const Card = ({ data }: { data: QAResponse }) => {
   const [showAnswer, setShowAnswer] = useState(false);
+  // 
   return (
     <motion.div
-      className="p-6 space-y-4 flex flex-col  rounded-lg"
+      className="p-6 space-y-4 flex flex-col rounded-lg"
       initial="hidden"
       animate="visible"
       exit="hidden"
@@ -69,7 +70,7 @@ const Card = ({ data }: { data: QAResponse }) => {
       {data.options.map((option, index) => (
         <motion.p
           key={index}
-          className=" text-lg font-medium flex items-center gap-3 cursor-pointer rounded-md p-2"
+          className=" text-lg font-medium flex items-center gap-3 cursor-pointer rounded-md p-2 group"
           variants={fadeInVariants}
           custom={0.2 + index * 0.1} // incremental delay for options
           onClick={() => console.log("Clicked option")}
@@ -78,10 +79,12 @@ const Card = ({ data }: { data: QAResponse }) => {
             type="checkbox"
             id="vehicle1"
             name="vehicle1"
-            value="Bike"
-            className="appearance-none  bg-white w-4 h-4 shadow-sm rounded-md  outline outline-1 flex-shrink-0 hover:bg-slate-950 cursor-pointer hover:transition-all hover:ease-in-out ease-linear transition-all hover:scale-110 "
+            value={option}
+      
+            className="appearance-none  bg-white w-4 h-4 shadow-sm rounded-md  outline outline-1 flex-shrink-0 group-hover:bg-slate-950 cursor-pointer hover:transition-all group-hover:ease-in-out  transition-all :checked:bg-slate-950  "
+
           />
-          <span className="">{option}</span>
+          <span className=" group-hover:line-through decoration-lime-600">{option}</span>
         </motion.p>
       ))}
       {/* Show answer button */}
