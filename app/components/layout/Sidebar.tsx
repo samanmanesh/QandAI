@@ -13,7 +13,7 @@ const Sidebar = () => {
       <h1 className="text-4xl font-medium  ml-6 mt-2 ">Q&Ai</h1>
       <div className="w-fit mt-60 mx-auto ">
         {path.match("/qa") && (
-          <Link href="/qa" className="flex gap-2 text-base font-semibold ">
+          <Link href="/qa" className="flex gap-2 text-base font-semibold hover:scale-105 transform transition-all ">
             <ReturnIcon />
             <text className="max-w-20  font-bold">Return to generation page</text>
           </Link>
