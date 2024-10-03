@@ -25,7 +25,6 @@ export default function Page({ params }: { params: { id: string } }) {
     setUserAnswers(params.id, questions[currentIndex].question, selectedAnswer);
   };
 
-  console.log("currentIndex", currentIndex);
   const handleNext = () => {
     setDirection(1);
     setCurrentIndex((prev) => (prev === questions.length - 1 ? 0 : prev + 1));
@@ -69,7 +68,6 @@ export default function Page({ params }: { params: { id: string } }) {
           variants={variants}
           className="absolute h-full max-w-[40rem]"
         >
-          {/* <Card data={questions[currentIndex]}  /> */}
           <Card
             question={questions[currentIndex]}
             onAnswer={handleAnswer}

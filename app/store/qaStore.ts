@@ -2,8 +2,6 @@
 import { create } from "zustand";
 import { QAResponse, UserAnswer } from "../types/qa";
 
-
-
 interface QAStore {
   questions: { [id: string]: QAResponse[] };
   userAnswers: { [id: string]: UserAnswer[] };

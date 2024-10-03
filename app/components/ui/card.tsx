@@ -1,23 +1,3 @@
-// 'use client';
-// import { QAResponse } from "@/app/types/qa";
-// import React from "react";
-
-// interface CardProps {
-//   data: QAResponse;
-// }
-// const Card = ({data}: CardProps ) => {
-//   console.log(">>", data);
-//   return (
-//     <div className="w-full h-96 bg-white rounded-lg shadow-lg p-4 flex-shrink-0 ">
-//       <div className="text-lg font-semibold">{data.question}</div>
-//       <div className="flex flex-col gap-2">
-
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Card;
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { QAResponse, UserAnswer } from "@/app/types/qa";
@@ -32,12 +12,6 @@ const fadeInVariants = {
   }),
 };
 
-// const headerVariants = {
-//   hidden: { opacity: 0, x: -100 },
-//   visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
-// };
-
-// const Card = ({ data }: { data: QAResponse }) => {
 interface QuestionAnswerProps {
   question: QAResponse;
   onAnswer: (selectedAnswer: string) => void;
@@ -46,7 +20,7 @@ interface QuestionAnswerProps {
 const Card = ({ question, onAnswer, userAnswer }: QuestionAnswerProps) => {
   const [showAnswer, setShowAnswer] = useState(false);
   //
-  console.log("userAnswer in card", userAnswer);
+
   return (
     <motion.div
       className="p-6 space-y-4 flex flex-col rounded-lg"
@@ -87,21 +61,18 @@ const Card = ({ question, onAnswer, userAnswer }: QuestionAnswerProps) => {
             id="vehicle1"
             name="vehicle1"
             value={option}
-            // disabled={!!userAnswer} // Disable the input if user has answered
             className={`appearance-none   w-4 h-4 shadow-sm rounded-md  outline outline-1 flex-shrink-0 group-hover:bg-slate-950 cursor-pointer hover:transition-all group-hover:ease-in-out  transition-all ${
               userAnswer?.selectedAnswer === option ? "bg-black" : "bg-white"
             }  `}
-            // checked={userAnswer?.selectedAnswer === option} // Check the input if user has answered
           />
           <span
-            className={`  ${
-              userAnswer &&
-              userAnswer.selectedAnswer === option &&
-              userAnswer.isCorrect &&
-              showAnswer
-                ? "line-through decoration-lime-600"
-                : "line-through decoration-red-500"
-            }`}
+            className={`${
+              option !== question.answer &&
+              showAnswer &&
+              "line-through decoration-red-900"
+            }
+            ${option === question.answer && showAnswer && "text-emerald-700 "}
+            `}
           >
             {option}
           </span>
