@@ -42,7 +42,7 @@ export default function Page({ params }: { params: { id: string } }) {
 
   const variants = {
     enter: {
-      x: direction === 1 ? 10 : -10,
+      // x: direction === 1 ? 10 : -10,
       opacity: 0,
     },
     center: {
@@ -58,15 +58,15 @@ export default function Page({ params }: { params: { id: string } }) {
   };
 
   return (
-    <div className="h-full w-full md:w-2/4 flex flex-col items-center justify-center">
-      <div className="relative w-full h-1/2 flex items-center justify-center overflow-hidden">
+    <div className="w-full md:w-2/4 flex flex-col items-center justify-center overflow-auto">
+      <div className="w-full h-full md:h-2/3 flex flex-col items-center justify-around">
         <motion.div
           key={currentIndex}
           initial="enter"
           animate="center"
           exit="exit"
           variants={variants}
-          className="absolute h-full max-w-[40rem]"
+          className="h-full rounded lg:w-[40rem]"
         >
           <Card
             question={questions[currentIndex]}
@@ -77,8 +77,7 @@ export default function Page({ params }: { params: { id: string } }) {
           />
         </motion.div>
       </div>
-
-      <section className="flex flex-row-reverse justify-around  gap-4 w-full">
+      <section className=" flex  flex-row-reverse justify-around gap-4 w-full  ">
         {/* Pagination Controls */}
         <div className="flex gap-4 mt-4">
           <button
