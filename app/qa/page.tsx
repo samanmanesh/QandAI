@@ -1,16 +1,14 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import useQA from "../hooks/useQA";
 import { InputType, QAResponse } from "../types/qa";
 import Textarea from "./components/Textarea";
 import Button from "../components/ui/Button";
 import MagicIcon from "../assets/MagicIcon";
 import { generateId } from "../utils/generateId";
-import { useStore } from "zustand";
 import { useQAStore } from "../store/qaStore";
 import { useRouter } from "next/navigation";
-import { set } from "zod";
 
 const QAPage = () => {
   const [inputType] = useState<InputType>("text");
@@ -53,9 +51,7 @@ const QAPage = () => {
   ]);
   const { generateQA, isLoading, error } = useQA();
   const router = useRouter();
-  // const setResult = useQAStore((state) => state.setQuestions);
-  const {setQuestions: setStoreQuestions} = useQAStore();
-
+  const { setQuestions: setStoreQuestions } = useQAStore();
 
   const handleSubmit = async () => {
     // const questions = await generateQA(inputType, inputValue);
@@ -94,23 +90,18 @@ const QAPage = () => {
         answer:
           "To facilitate the residual connections and ensure the outputs have the same dimension as the input",
       },
-    ]
+    ];
 
     console.log("Questions:", questions);
-    
-
 
     if (!isLoading && !error) setInputValue("");
 
     if (!questions) return;
     setQuestions(questions);
-    //generate id 
+    //generate id
     const id = generateId();
     // set questions in store
-    // useQAStore((state) => state.setQuestions(id, questions));
-    // setResult(id, questions);
     setStoreQuestions(id, questions);
-
 
     router.push(`/qa/${id}`);
   };

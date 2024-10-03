@@ -38,14 +38,14 @@ const fadeInVariants = {
 // };
 
 // const Card = ({ data }: { data: QAResponse }) => {
-  interface QuestionAnswerProps {
-    question: QAResponse;
-    onAnswer: (selectedAnswer: string) => void;
-    userAnswer?: UserAnswer;
-  }
-  const Card = ({ question, onAnswer, userAnswer }: QuestionAnswerProps) => {
+interface QuestionAnswerProps {
+  question: QAResponse;
+  onAnswer: (selectedAnswer: string) => void;
+  userAnswer?: UserAnswer;
+}
+const Card = ({ question, onAnswer, userAnswer }: QuestionAnswerProps) => {
   const [showAnswer, setShowAnswer] = useState(false);
-  // 
+  //
   console.log("userAnswer in card", userAnswer);
   return (
     <motion.div
@@ -87,20 +87,33 @@ const fadeInVariants = {
             id="vehicle1"
             name="vehicle1"
             value={option}
-            disabled={!!userAnswer} // Disable the input if user has answered
-            className={`appearance-none  bg-white w-4 h-4 shadow-sm rounded-md  outline outline-1 flex-shrink-0 group-hover:bg-slate-950 cursor-pointer hover:transition-all group-hover:ease-in-out  transition-all ${ userAnswer?.selectedAnswer === option ? "bg-black": "bg-white"}  `}
-            checked={userAnswer?.selectedAnswer === option} // Check the input if user has answered
-
+            // disabled={!!userAnswer} // Disable the input if user has answered
+            className={`appearance-none   w-4 h-4 shadow-sm rounded-md  outline outline-1 flex-shrink-0 group-hover:bg-slate-950 cursor-pointer hover:transition-all group-hover:ease-in-out  transition-all ${
+              userAnswer?.selectedAnswer === option ? "bg-black" : "bg-white"
+            }  `}
+            // checked={userAnswer?.selectedAnswer === option} // Check the input if user has answered
           />
-          <span className={`  ${(userAnswer && userAnswer.selectedAnswer === option && userAnswer.isCorrect && showAnswer) ? "line-through decoration-lime-600" : "line-through decoration-red-500"}`}>{option}</span>
+          <span
+            className={`  ${
+              userAnswer &&
+              userAnswer.selectedAnswer === option &&
+              userAnswer.isCorrect &&
+              showAnswer
+                ? "line-through decoration-lime-600"
+                : "line-through decoration-red-500"
+            }`}
+          >
+            {option}
+          </span>
         </motion.p>
       ))}
+
       {/* Show answer button */}
       <motion.button
         className="font-semibold"
         onClick={() => setShowAnswer(!showAnswer)} // Toggle the answer
       >
-        {showAnswer ? "" : "Click to see answer"}
+        {showAnswer ? "" : "Click to see correct answer"}
       </motion.button>
 
       {/* Animate the answer */}

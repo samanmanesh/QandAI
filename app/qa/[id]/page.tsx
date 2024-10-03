@@ -2,40 +2,13 @@
 import Card from "@/app/components/ui/Card";
 import { useQAStore } from "@/app/store/qaStore";
 import { QAResponse, UserAnswer } from "@/app/types/qa";
-import React, { useEffect, useState } from "react";
-import { easeInOut, motion } from "framer-motion";
+import { useState } from "react";
+import { motion } from "framer-motion";
 import NextIcon from "@/app/assets/NextIcon";
 import PrevIcon from "@/app/assets/PrevIcon";
 
-// export default function Page({ params }: { params: { id: string } }) {
-//   // getting the data with id from the params from store
-//   console.log("params.id", params.id);
-//   const getData = useQAStore((state) => state.getQuestions);
-//   let questions: QAResponse[] | undefined = getData(params.id);
-//   console.log("questions1", questions);
-//   // useEffect(() => {
-//   //    questions = getData(params.id);
-//   //    console.log("questions2", questions);
-//   // }
-//   // , [params.id]);
-
-//   if (!questions) return <div>Not Found</div>;
-
-//   //todo: here we use the animated pagination to show each question one by one
-
-//   return (
-//     <div className="h-full w-full bg-slate-50 md:w-2/4 flex gap-8 overflow-hidden">
-//       {questions.map((question, index) => (
-//         <Card key={index} data={question}  />
-//       ))}
-
-//     </div>
-//   );
-// }
-
 export default function Page({ params }: { params: { id: string } }) {
-  const { getQuestions, getUserAnswers, setUserAnswers } = useQAStore()
-    ;
+  const { getQuestions, getUserAnswers, setUserAnswers } = useQAStore();
   // const getData = useQAStore((state) => state.getQuestions);
   const questions: QAResponse[] | undefined = getQuestions(params.id);
   const userAnswers: UserAnswer[] | undefined = getUserAnswers(params.id);
@@ -50,10 +23,9 @@ export default function Page({ params }: { params: { id: string } }) {
 
   const handleAnswer = (selectedAnswer: string) => {
     setUserAnswers(params.id, questions[currentIndex].question, selectedAnswer);
-  }
+  };
 
-
-
+  console.log("currentIndex", currentIndex);
   const handleNext = () => {
     setDirection(1);
     setCurrentIndex((prev) => (prev === questions.length - 1 ? 0 : prev + 1));
@@ -68,7 +40,6 @@ export default function Page({ params }: { params: { id: string } }) {
     setDirection(index > currentIndex ? 1 : -1);
     setCurrentIndex(index);
   };
-
 
   const variants = {
     enter: {
@@ -110,43 +81,43 @@ export default function Page({ params }: { params: { id: string } }) {
       </div>
 
       <section className="flex flex-row-reverse justify-around  gap-4 w-full">
-      {/* Pagination Controls */}
-      <div className="flex gap-4 mt-4">
-        <button
-          className="px-4 py-2 bg-black text-white rounded-full  hover:scale-105 transform transition-all"
-          onClick={handlePrev}
-          disabled={questions.length === 1 || currentIndex === 0}
-        >
-          <PrevIcon />
-        </button>
-        <button
-          className="px-4 py-2 bg-black text-white rounded-full hover:scale-105 transform transition-all"
-          onClick={handleNext}
-          disabled={
-            questions.length === 1 || currentIndex === questions.length - 1
-          }
-        >
-          <NextIcon />
-        </button>
-      </div>
-      {/* Question Numbers */}
-      <div className="flex gap-1 mt-4">
-        {questions.map((_, index) => (
+        {/* Pagination Controls */}
+        <div className="flex gap-4 mt-4">
           <button
-            key={index}
-            className={`p-0.5 w-7 h-7 font-semibold text rounded-full ${
-              currentIndex === index
-                ? "bg-indigo-950 text-white scale-105"
-                : "bg- text-black scale-75 hover:scale-125"
-            } hover:bg-indigo-950 hover:text-white  transform transition-all
-                `}
-            onClick={() => handleSelectQuestion(index)}
+            className="px-4 py-2 bg-black text-white rounded-full  hover:scale-105 transform transition-all"
+            onClick={handlePrev}
+            disabled={questions.length === 1 || currentIndex === 0}
           >
-            {index + 1}
+            <PrevIcon />
           </button>
-        ))}
-      </div>
-    </section>
+          <button
+            className="px-4 py-2 bg-black text-white rounded-full hover:scale-105 transform transition-all"
+            onClick={handleNext}
+            disabled={
+              questions.length === 1 || currentIndex === questions.length - 1
+            }
+          >
+            <NextIcon />
+          </button>
+        </div>
+        {/* Question Numbers */}
+        <div className="flex gap-1 mt-4">
+          {questions.map((_, index) => (
+            <button
+              key={index}
+              className={`p-0.5 w-7 h-7 font-semibold text rounded-full ${
+                currentIndex === index
+                  ? "bg-indigo-950 text-white scale-105"
+                  : "bg- text-black scale-75 hover:scale-125"
+              } hover:bg-indigo-950 hover:text-white  transform transition-all
+                `}
+              onClick={() => handleSelectQuestion(index)}
+            >
+              {index + 1}
+            </button>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }
