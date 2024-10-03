@@ -2,13 +2,15 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { QAResponse, UserAnswer } from "@/app/types/qa";
 
+
 // Define animation variants for children
 const fadeInVariants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 20, filter: "blur(5px)" },
   visible: (delay: number) => ({
     opacity: 1,
     y: 0,
-    transition: { delay, duration: 0.5 },
+    transition: { delay, duration: 0.6 },
+    filter: "blur(0px)",
   }),
 };
 

@@ -108,8 +108,8 @@ const QAPage = () => {
 
   return (
     <div className="h-full w-full md:w-2/4 flex flex-col gap-3 justify-center items-center   ">
-      <div className="min-w-12 flex flex-col gap-12  w-[85%] ">
-        <section className=" flex flex-col gap-2  ">
+      <div className="min-w-12 flex flex-col gap-12 w-[85%]">
+        <section className="flex flex-col gap-2">
           <h1 className="text-4xl font-medium">
             Welcome to
             <span className="text-4xl font-semibold"> QandAI, </span>

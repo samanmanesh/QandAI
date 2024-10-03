@@ -42,16 +42,16 @@ export default function Page({ params }: { params: { id: string } }) {
 
   const variants = {
     enter: {
-      x: direction === 1 ? 1000 : -1000,
+      x: direction === 1 ? 10 : -10,
       opacity: 0,
     },
     center: {
-      x: 0,
+      // x: 0,
       opacity: 1,
       transition: { duration: 0.5, delay: 0.1, ease: "easeInOut" },
     },
     exit: {
-      x: direction === 1 ? -1000 : 1000,
+      // x: direction === 1 ? -10 : 10,
       opacity: 0,
       transition: { duration: 0.5, delay: 0.1, ease: "easeInOut" },
     },
@@ -105,10 +105,9 @@ export default function Page({ params }: { params: { id: string } }) {
               key={index}
               className={`p-0.5 w-7 h-7 font-semibold text rounded-full ${
                 currentIndex === index
-                  ? "bg-indigo-950 text-white scale-105"
-                  : "bg- text-black scale-75 hover:scale-125"
-              } hover:bg-indigo-950 hover:text-white  transform transition-all
-                `}
+                  ? "bg-black text-white scale-105"
+                  : "bg-black text-white scale-75 hover:scale-125"
+              } hover:bg-black hover:text-white transform transition-all`}
               onClick={() => handleSelectQuestion(index)}
             >
               {index + 1}
