@@ -1,7 +1,7 @@
 "use client";
 import Card from "@/app/components/ui/Card";
 import { useQAStore } from "@/app/store/qaStore";
-import { QAResponse } from "@/app/types/qa";
+import { QAResponse, UserAnswer } from "@/app/types/qa";
 import React, { useEffect, useState } from "react";
 import { easeInOut, motion } from "framer-motion";
 import NextIcon from "@/app/assets/NextIcon";
@@ -34,13 +34,25 @@ import PrevIcon from "@/app/assets/PrevIcon";
 // }
 
 export default function Page({ params }: { params: { id: string } }) {
-  const getData = useQAStore((state) => state.getQuestions);
-  const questions: QAResponse[] | undefined = getData(params.id);
+  const { getQuestions, getUserAnswers, setUserAnswers } = useQAStore()
+    ;
+  // const getData = useQAStore((state) => state.getQuestions);
+  const questions: QAResponse[] | undefined = getQuestions(params.id);
+  const userAnswers: UserAnswer[] | undefined = getUserAnswers(params.id);
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0); // 1 for next, -1 for prev
 
+  console.log("questions", questions);
+  console.log("userAnswers", userAnswers);
+
   if (!questions) return <div>Not Found</div>;
+
+  const handleAnswer = (selectedAnswer: string) => {
+    setUserAnswers(params.id, questions[currentIndex].question, selectedAnswer);
+  }
+
+
 
   const handleNext = () => {
     setDirection(1);
@@ -56,6 +68,7 @@ export default function Page({ params }: { params: { id: string } }) {
     setDirection(index > currentIndex ? 1 : -1);
     setCurrentIndex(index);
   };
+
 
   const variants = {
     enter: {
@@ -85,7 +98,14 @@ export default function Page({ params }: { params: { id: string } }) {
           variants={variants}
           className="absolute h-full max-w-[40rem]"
         >
-          <Card data={questions[currentIndex]} />
+          {/* <Card data={questions[currentIndex]}  /> */}
+          <Card
+            question={questions[currentIndex]}
+            onAnswer={handleAnswer}
+            userAnswer={userAnswers?.find(
+              (ua) => ua.questionId === questions[currentIndex].question
+            )}
+          />
         </motion.div>
       </div>
 

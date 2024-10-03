@@ -10,6 +10,7 @@ import { generateId } from "../utils/generateId";
 import { useStore } from "zustand";
 import { useQAStore } from "../store/qaStore";
 import { useRouter } from "next/navigation";
+import { set } from "zod";
 
 const QAPage = () => {
   const [inputType] = useState<InputType>("text");
@@ -52,7 +53,8 @@ const QAPage = () => {
   ]);
   const { generateQA, isLoading, error } = useQA();
   const router = useRouter();
-  const setResult = useQAStore((state) => state.setQuestions);
+  // const setResult = useQAStore((state) => state.setQuestions);
+  const {setQuestions: setStoreQuestions} = useQAStore();
 
 
   const handleSubmit = async () => {
@@ -106,7 +108,8 @@ const QAPage = () => {
     const id = generateId();
     // set questions in store
     // useQAStore((state) => state.setQuestions(id, questions));
-    setResult(id, questions);
+    // setResult(id, questions);
+    setStoreQuestions(id, questions);
 
 
     router.push(`/qa/${id}`);
