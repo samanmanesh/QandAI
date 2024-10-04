@@ -58,7 +58,7 @@ const Card = ({ question, onAnswer, userAnswer }: QuestionAnswerProps) => {
 
   return (
     <motion.div
-      className="h-full  p-6 space-y-4 flex flex-col justify-between items-start  rounded-lg flex-grow-0"
+      className="h-full  p-6 space-y-4 flex flex-col justify-between items-start  rounded-lg flex-grow-0 bg-[#F3F3F3]"
       initial="hidden"
       animate="visible"
       exit="hidden"
@@ -78,48 +78,58 @@ const Card = ({ question, onAnswer, userAnswer }: QuestionAnswerProps) => {
           className="text-2xl font-bold mb-8 "
           variants={fadeInVariants}
           // variants={headerVariants}
-          custom={0.5} // delay for h1
+          custom={0.1} // delay for h1
         >
           {question.question}
         </motion.h1>
 
         {/* Animate the options */}
         {question.options.map((option, index) => (
-          <motion.p
+          <motion.div
             key={option}
-            className=" text-lg font-medium flex items-center gap-3 cursor-pointer rounded-md p-2 group"
+            className={` text-lg font-medium flex items-center gap-4 cursor-pointer rounded-md p-2 mb-3 group ${
+              option === question.answer && showAnswer && "bg-emerald-50  "
+            } ${!showAnswer && "hover:bg-slate-50 "} `}
             variants={fadeInVariants}
-            custom={0.3 + index * 0.1} // incremental delay for options
-            onClick={() => onAnswer(option)}
+            custom={0.02 + index * 0.1} // incremental delay for options
+            onClick={() => {
+              onAnswer(option);
+              setShowAnswer(true); // Toggle the answer after the button animation is done
+            }}
           >
             <input
               type="checkbox"
               id="vehicle1"
               name="vehicle1"
               value={option}
-              className={`appearance-none   w-4 h-4 shadow-sm rounded-md  outline outline-1 flex-shrink-0 group-hover:bg-slate-950 cursor-pointer hover:transition-all group-hover:ease-in-out group-hover:duration-100 group-hover:delay-75 transition-all ${
-                userAnswer?.selectedAnswer === option ? "bg-black" : "bg-white"
+              className={`appearance-none   w-5 h-5 shadow-sm rounded border border-neutral-300 flex-shrink-0  cursor-pointer hover:transition-all group-hover:ease-in-out group-hover:duration-100 group-hover:delay-75 transition-all ${
+                userAnswer?.selectedAnswer === option ? "bg-neutral-400" : "bg-white"
               }  `}
             />
             <span
               className={`${
-                option !== question.answer &&
-                showAnswer &&
-                "line-through decoration-red-900"
+                option !== question.answer && showAnswer && "opacity-75  "
               }
-            ${option === question.answer && showAnswer && "text-emerald-700 "}
+            ${option === question.answer && showAnswer && "text-emerald-700  "}
+            ${
+              userAnswer?.selectedAnswer === option &&
+              !userAnswer?.isCorrect &&
+              showAnswer &&
+              " text-rose-700 not-line-through"
+            }
+            
             `}
             >
               {option}
             </span>
-          </motion.p>
+          </motion.div>
         ))}
       </motion.section>
       {/* Show answer button */}
       <motion.section className="min-h-24 w-full mt-auto flex flex-col justify-end">
         {!showAnswer ? (
           <motion.button
-            className="font-semibold text-medium border-t border-black p-1  mx-auto  w-full "
+            className="font-semibold text-medium  border-black p-1  mx-auto  w-full "
             onClick={() => {
               animate(
                 buttonRef.current,

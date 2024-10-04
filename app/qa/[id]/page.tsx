@@ -58,8 +58,8 @@ export default function Page({ params }: { params: { id: string } }) {
   };
 
   return (
-    <div className="w-full md:w-2/4 flex flex-col items-center justify-center overflow-auto">
-      <div className="w-full h-full md:h-2/3 flex flex-col items-center justify-around">
+    <div className="w-full md:w-2/4 flex flex-col items-center justify-center overflow-auto bg-white">
+      <div className="w-full h-full md:h-2/3 flex flex-col items-center justify-around ">
         <motion.div
           key={currentIndex}
           initial="enter"
