@@ -6,6 +6,8 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import NextIcon from "@/app/assets/NextIcon";
 import PrevIcon from "@/app/assets/PrevIcon";
+import RotateIcon from "@/app/assets/RotateIcon";
+import Link from "next/link";
 
 export default function Page({ params }: { params: { id: string } }) {
   const { getQuestions, getUserAnswers, setUserAnswers, restedUserAnswers } =
@@ -16,10 +18,15 @@ export default function Page({ params }: { params: { id: string } }) {
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  console.log("questions", questions);
-  console.log("userAnswers", userAnswers);
 
-  if (!questions) return <div>Not Found</div>;
+
+  if (!questions) return <div className="flex flex-col gap-4 w-full md:w-2/4 items-center justify-center">
+    <h1 className="text-3xl font-bold mb-4">No questions found ‼️</h1>
+    <p className="text-lg font-medium">Please generate questions first</p>
+    <Link href="/qa">
+      <button className="text-md font-bold bg-neutral-900 rounded-lg text-white py-2 px-4 ">Return to generation page</button>
+    </Link>
+  </div>;
 
   const handleAnswer = (selectedAnswer: string) => {
     setUserAnswers(params.id, questions[currentIndex].question, selectedAnswer);
@@ -27,7 +34,6 @@ export default function Page({ params }: { params: { id: string } }) {
 
   const handleRestartAnswers = () => {
     restedUserAnswers(params.id);
-    
   };
 
   const handleNext = () => {
@@ -91,6 +97,17 @@ export default function Page({ params }: { params: { id: string } }) {
           >
             <PrevIcon />
           </button>
+          {
+            //if user has answered all questions we show the restart button
+            userAnswers?.length === questions.length && (
+              <button
+                className="text-white transform transition-all hover:scale-90   disabled:hover:scale-100"
+                onClick={handleRestartAnswers}
+              >
+                <RotateIcon />
+              </button>
+            )
+          }
           <button
             className="w-full flex justify-end transform transition-all hover:scale-90 hover:shadow   disabled:opacity-50  disabled:hover:scale-100  "
             onClick={handleNext}
@@ -101,17 +118,6 @@ export default function Page({ params }: { params: { id: string } }) {
             <NextIcon />
           </button>
         </div>
-        {
-          //if user has answered all questions we show the restart button
-          userAnswers?.length === questions.length && (
-            <button
-              className="w-44 bg-neutral-900 text-white rounded-full px-4 py-2 hover:shadow"
-              onClick={handleRestartAnswers}
-            >
-              Restart
-            </button>
-          )
-        }
 
         <div className="flex gap-2 ">
           {questions.map((_, index) => (
