@@ -97,7 +97,7 @@ const Card = ({ question, onAnswer, userAnswer }: QuestionAnswerProps) => {
               id="vehicle1"
               name="vehicle1"
               value={option}
-              className={`appearance-none   w-4 h-4 shadow-sm rounded-md  outline outline-1 flex-shrink-0 group-hover:bg-slate-950 cursor-pointer hover:transition-all group-hover:ease-in-out  transition-all ${
+              className={`appearance-none   w-4 h-4 shadow-sm rounded-md  outline outline-1 flex-shrink-0 group-hover:bg-slate-950 cursor-pointer hover:transition-all group-hover:ease-in-out group-hover:duration-100 group-hover:delay-75 transition-all ${
                 userAnswer?.selectedAnswer === option ? "bg-black" : "bg-white"
               }  `}
             />
@@ -119,7 +119,7 @@ const Card = ({ question, onAnswer, userAnswer }: QuestionAnswerProps) => {
       <motion.section className="min-h-24 w-full mt-auto flex flex-col justify-end">
         {!showAnswer ? (
           <motion.button
-            className="font-semibold text-medium border-t-2 border-black p-1 rounded- mx-auto "
+            className="font-semibold text-medium border-t border-black p-1  mx-auto  w-full "
             onClick={() => {
               animate(
                 buttonRef.current,
@@ -134,6 +134,20 @@ const Card = ({ question, onAnswer, userAnswer }: QuestionAnswerProps) => {
             initial="hidden"
             animate="visible"
             exit="exit"
+            onHoverStart={() => {
+              animate(
+                buttonRef.current,
+                { scale: 1.05 },
+                { duration: 0.2, ease: "easeInOut" }
+              );
+            }}
+            onHoverEnd={() => {
+              animate(
+                buttonRef.current,
+                { scale: 1 },
+                { duration: 0.2, ease: "easeInOut" }
+              );
+            }}
             ref={buttonRef}
           >
             Reveal Answer

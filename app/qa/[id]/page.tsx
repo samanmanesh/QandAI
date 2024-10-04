@@ -102,10 +102,10 @@ export default function Page({ params }: { params: { id: string } }) {
           {questions.map((_, index) => (
             <button
               key={index}
-              className={`p-0.5 w-7 h-7 font-semibold text rounded-full ${
+              className={`p-0.5 w-6 h-6 font-semibold text-sm rounded-full ${
                 currentIndex === index
                   ? "bg-black text-white scale-105"
-                  : "bg-black text-white scale-75 hover:scale-125"
+                  : "scale-75 hover:scale-110"
               } hover:bg-black hover:text-white transform transition-all`}
               onClick={() => handleSelectQuestion(index)}
             >
