@@ -94,9 +94,20 @@ const Card = ({ question, onAnswer, userAnswer }: QuestionAnswerProps) => {
         {question.options.map((option, index) => (
           <motion.div
             key={option}
-            className={` text-lg font-medium flex items-center gap-4 cursor-pointer rounded-md p-2 mb-3 group ${
-              option === question.answer && showAnswer && "bg-emerald-50 "
-            } ${!showAnswer && "hover:bg-slate-50 "} `}
+            className={` text-lg font-medium flex items-center gap-4 cursor-pointer rounded-md p-2 mb-3 group 
+              ${
+                option === question.answer &&
+                showAnswer &&
+                "bg-emerald-50 text-emerald-700  "
+              } 
+            ${!showAnswer && "hover:bg-slate-50 "}
+            ${
+              userAnswer?.selectedAnswer === option &&
+              !userAnswer?.isCorrect &&
+              showAnswer &&
+              " text-rose-900  bg-rose-100"
+            } 
+            `}
             variants={fadeInVariants}
             custom={0.02 + index * 0.1} // incremental delay for options
             onClick={() => {
@@ -105,18 +116,6 @@ const Card = ({ question, onAnswer, userAnswer }: QuestionAnswerProps) => {
               setShowAnswer(true); // Toggle the answer after the button animation is done
             }}
           >
-            {/* <input
-              type="checkbox"
-              id="vehicle1"
-              name="vehicle1"
-              value={option}
-              className={`appearance-none   w-5 h-5 shadow-sm rounded border border-neutral-300 flex-shrink-0  cursor-pointer hover:transition-all group-hover:ease-in-out group-hover:duration-100 group-hover:delay-75 transition-all ${
-                userAnswer?.selectedAnswer === option
-                  ? "bg-neutral-400"
-                  : "bg-white"
-              }  `}
-            /> */}
-
             <CheckBox
               clicked={userAnswer?.selectedAnswer === option}
               onClick={() => {
@@ -126,7 +125,7 @@ const Card = ({ question, onAnswer, userAnswer }: QuestionAnswerProps) => {
               }}
               className={`
                 ${
-                  userAnswer?.selectedAnswer !== option &&
+                  userAnswer?.selectedAnswer !== option && !showAnswer &&
                   "group-hover:bg-neutral-300 transition-all "
                 }`}
             />
@@ -135,13 +134,8 @@ const Card = ({ question, onAnswer, userAnswer }: QuestionAnswerProps) => {
               className={`${
                 option !== question.answer && showAnswer && "opacity-75  "
               }
-            ${option === question.answer && showAnswer && "text-emerald-700  "}
-            ${
-              userAnswer?.selectedAnswer === option &&
-              !userAnswer?.isCorrect &&
-              showAnswer &&
-              " text-rose-700 not-line-through"
-            }
+            ${option === question.answer && showAnswer && " "}
+            
             
             `}
             >
