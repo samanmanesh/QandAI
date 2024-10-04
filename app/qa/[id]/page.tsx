@@ -7,9 +7,9 @@ import { motion } from "framer-motion";
 import NextIcon from "@/app/assets/NextIcon";
 import PrevIcon from "@/app/assets/PrevIcon";
 
-
 export default function Page({ params }: { params: { id: string } }) {
-  const { getQuestions, getUserAnswers, setUserAnswers } = useQAStore();
+  const { getQuestions, getUserAnswers, setUserAnswers, restedUserAnswers } =
+    useQAStore();
   // const getData = useQAStore((state) => state.getQuestions);
   const questions: QAResponse[] | undefined = getQuestions(params.id);
   const userAnswers: UserAnswer[] | undefined = getUserAnswers(params.id);
@@ -23,6 +23,11 @@ export default function Page({ params }: { params: { id: string } }) {
 
   const handleAnswer = (selectedAnswer: string) => {
     setUserAnswers(params.id, questions[currentIndex].question, selectedAnswer);
+  };
+
+  const handleRestartAnswers = () => {
+    restedUserAnswers(params.id);
+    
   };
 
   const handleNext = () => {
@@ -96,7 +101,18 @@ export default function Page({ params }: { params: { id: string } }) {
             <NextIcon />
           </button>
         </div>
-        {/* Question Numbers */}
+        {
+          //if user has answered all questions we show the restart button
+          userAnswers?.length === questions.length && (
+            <button
+              className="w-44 bg-neutral-900 text-white rounded-full px-4 py-2 hover:shadow"
+              onClick={handleRestartAnswers}
+            >
+              Restart
+            </button>
+          )
+        }
+
         <div className="flex gap-2 ">
           {questions.map((_, index) => (
             <button

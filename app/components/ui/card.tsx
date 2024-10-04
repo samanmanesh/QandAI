@@ -16,26 +16,6 @@ const fadeInVariants = {
   }),
 };
 
-const fadeInAndOutVariants = {
-  hidden: { opacity: 0, y: 10, filter: "blur(6px)" },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.7, delay: 0.5 },
-    filter: "blur(0px)",
-  },
-};
-
-const slideDownVariants = {
-  hidden: { opacity: 1, y: 0, filter: "blur(10px)" },
-  visible: {
-    opacity: 1,
-    y: [0, 20],
-    transition: { duration: 0.7 },
-    filter: "blur(0px)",
-  },
-};
-
 const slideUpVariants = {
   hidden: { opacity: 0, y: 30, filter: "blur(6px)" },
   visible: {
@@ -55,9 +35,10 @@ const Card = ({ question, onAnswer, userAnswer }: QuestionAnswerProps) => {
   const [showAnswer, setShowAnswer] = useState(false);
 
   useEffect(() => {
-    //check if user answer an option and show the answer
     if (userAnswer?.selectedAnswer) {
       setShowAnswer(true);
+    } else {
+      setShowAnswer(false);
     }
   }, [userAnswer]);
   return (
@@ -90,11 +71,11 @@ const Card = ({ question, onAnswer, userAnswer }: QuestionAnswerProps) => {
         {question.options.map((option, index) => (
           <motion.div
             key={option}
-            className={` text-lg font-medium flex items-center gap-4 cursor-pointer rounded-md p-2 mb-3 group 
+            className={` text-lg font-medium flex items-center gap-4 cursor-pointer rounded-md p-2 mb-3 group  
               ${
-                option === question.answer &&
-                showAnswer &&
-                "bg-emerald-50 text-emerald-700  "
+                option === question.answer && showAnswer
+                  ? "bg-emerald-50 text-emerald-700  "
+                  : "bg-white text-black "
               } 
             ${!showAnswer && "hover:bg-slate-50 "}
             ${
@@ -119,6 +100,7 @@ const Card = ({ question, onAnswer, userAnswer }: QuestionAnswerProps) => {
                 onAnswer(option);
                 setShowAnswer(true); // Toggle the answer after the button animation is done
               }}
+              disabled={showAnswer}
               className={`
                 ${
                   userAnswer?.selectedAnswer !== option &&
@@ -131,9 +113,6 @@ const Card = ({ question, onAnswer, userAnswer }: QuestionAnswerProps) => {
               className={`${
                 option !== question.answer && showAnswer && "opacity-75  "
               }
-            ${option === question.answer && showAnswer && " "}
-            
-            
             `}
             >
               {option}

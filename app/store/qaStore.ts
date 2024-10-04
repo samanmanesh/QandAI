@@ -12,6 +12,7 @@ interface QAStore {
     questionId: string,
     selectedAnswer: string
   ) => void;
+  restedUserAnswers: (id: string) => void;
   getUserAnswers: (id: string) => UserAnswer[] | undefined;
 }
 
@@ -39,5 +40,6 @@ export const useQAStore = create<QAStore>((set, get) => ({
         userAnswers: { ...state.userAnswers, [id]: updatedUserAnswers },
       };
     }),
+    restedUserAnswers: (id) => set((state) => ({ userAnswers: { ...state.userAnswers, [id]: [] } })),
   getUserAnswers: (id) => get().userAnswers[id],
 }));

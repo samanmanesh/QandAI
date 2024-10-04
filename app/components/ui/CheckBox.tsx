@@ -1,34 +1,15 @@
 import clsx from "clsx";
-import { on } from "events";
 import { motion } from "framer-motion";
 import React, { useState } from "react";
-
-{
-  /* <svg
-xmlns="http://www.w3.org/2000/svg"
-width={18}
-height={18}
-fill="none"
-viewBox="0 0 18 18"
-{...props}
->
-<path
-  stroke="#fff"
-  strokeLinecap="round"
-  strokeLinejoin="round"
-  strokeWidth={2}
-  d="m15 4.5-8.25 8.25L3 9"
-/>
-</svg> */
-}
 
 type Props = {
   clicked: boolean;
   onClick: () => void;
   className?: string;
+  disabled?: boolean;
 };
 
-const Input = ({ clicked, onClick, className }: Props) => {
+const Input = ({ clicked, onClick, className, disabled }: Props) => {
   const [isScaledDown, setIsScaledDown] = useState(false);
 
   const handleOnClick = () => {
@@ -48,7 +29,7 @@ const Input = ({ clicked, onClick, className }: Props) => {
         }`,
         className
       )}
-      onClick={handleOnClick}
+      onClick={disabled ? undefined : handleOnClick}
       animate={{ scale: isScaledDown ? 0.9 : clicked ? 1 : 1 }}
       transition={{ duration: 0.2 }} // Adjust the duration to make it smoother
     >
