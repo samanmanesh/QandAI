@@ -55,7 +55,7 @@ const QAPage = () => {
 
   const handleSubmit = async () => {
     // const questions = await generateQA(inputType, inputValue);
-    //!tmp
+    //!tmp  
     // const questions = [
     //   {
     //     question: "What is the composition of the encoder?",

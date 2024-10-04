@@ -33,6 +33,7 @@ export default function Page({ params }: { params: { id: string } }) {
   };
 
   const handleRestartAnswers = () => {
+    setCurrentIndex(0);
     restedUserAnswers(params.id);
   };
 

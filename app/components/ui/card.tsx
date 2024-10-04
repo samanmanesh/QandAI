@@ -73,9 +73,9 @@ const Card = ({ question, onAnswer, userAnswer }: QuestionAnswerProps) => {
             key={option}
             className={` text-lg font-medium flex items-center gap-4 cursor-pointer rounded-md p-2 mb-3 group  
               ${
-                option === question.answer && showAnswer
-                  ? "bg-emerald-50 text-emerald-700  "
-                  : "bg-white text-black "
+                option === question.answer &&
+                showAnswer &&
+                "bg-emerald-50 text-emerald-700  "
               } 
             ${!showAnswer && "hover:bg-slate-50 "}
             ${
