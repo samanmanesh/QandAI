@@ -53,9 +53,6 @@ interface QuestionAnswerProps {
 }
 const Card = ({ question, onAnswer, userAnswer }: QuestionAnswerProps) => {
   const [showAnswer, setShowAnswer] = useState(false);
-  const [isButtonAnimating, setIsButtonAnimating] = useState(false); // Button animation state
-  const [startAnimating, setStartAnimating] = useState(false); // Button animation state
-  const buttonRef = useRef(null);
 
   useEffect(() => {
     //check if user answer an option and show the answer
@@ -84,7 +81,6 @@ const Card = ({ question, onAnswer, userAnswer }: QuestionAnswerProps) => {
         <motion.h1
           className="text-2xl font-bold mb-8 "
           variants={fadeInVariants}
-          // variants={headerVariants}
           custom={0.1} // delay for h1
         >
           {question.question}
@@ -125,7 +121,8 @@ const Card = ({ question, onAnswer, userAnswer }: QuestionAnswerProps) => {
               }}
               className={`
                 ${
-                  userAnswer?.selectedAnswer !== option && !showAnswer &&
+                  userAnswer?.selectedAnswer !== option &&
+                  !showAnswer &&
                   "group-hover:bg-neutral-300 transition-all "
                 }`}
             />
@@ -144,44 +141,7 @@ const Card = ({ question, onAnswer, userAnswer }: QuestionAnswerProps) => {
           </motion.div>
         ))}
       </motion.section>
-      {/* Show answer button */}
       <motion.section className="min-h-24 w-full mt-auto flex flex-col justify-end">
-        {/* {!showAnswer ? (
-          <motion.button
-            className="font-semibold text-medium  border-black p-1  mx-auto  w-full "
-            onClick={() => {
-              animate(
-                buttonRef.current,
-                { opacity: 0, y: -30, filter: "blur(6px)" },
-                { duration: 0.2 }
-              );
-              setTimeout(() => {
-                setShowAnswer(true); // Toggle the answer after the button animation is done
-              }, 200);
-            }}
-            variants={slideDownVariants}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-            onHoverStart={() => {
-              animate(
-                buttonRef.current,
-                { scale: 1.05 },
-                { duration: 0.2, ease: "easeInOut" }
-              );
-            }}
-            onHoverEnd={() => {
-              animate(
-                buttonRef.current,
-                { scale: 1 },
-                { duration: 0.2, ease: "easeInOut" }
-              );
-            }}
-            ref={buttonRef}
-          >
-            Reveal Answer
-          </motion.button>
-        )   */}
         {showAnswer ? (
           <motion.p
             className="p-1 text-lg font-medium"

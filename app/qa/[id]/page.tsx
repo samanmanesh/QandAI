@@ -14,7 +14,6 @@ export default function Page({ params }: { params: { id: string } }) {
   const userAnswers: UserAnswer[] | undefined = getUserAnswers(params.id);
 
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [direction, setDirection] = useState(0); // 1 for next, -1 for prev
 
   console.log("questions", questions);
   console.log("userAnswers", userAnswers);
@@ -26,32 +25,26 @@ export default function Page({ params }: { params: { id: string } }) {
   };
 
   const handleNext = () => {
-    setDirection(1);
     setCurrentIndex((prev) => (prev === questions.length - 1 ? 0 : prev + 1));
   };
 
   const handlePrev = () => {
-    setDirection(-1);
     setCurrentIndex((prev) => (prev === 0 ? questions.length - 1 : prev - 1));
   };
 
   const handleSelectQuestion = (index: number) => {
-    setDirection(index > currentIndex ? 1 : -1);
     setCurrentIndex(index);
   };
 
   const variants = {
     enter: {
-      // x: direction === 1 ? 10 : -10,
       opacity: 0,
     },
     center: {
-      // x: 0,
       opacity: 1,
       transition: { duration: 0.5, delay: 0.1, ease: "easeInOut" },
     },
     exit: {
-      // x: direction === 1 ? -10 : 10,
       opacity: 0,
       transition: { duration: 0.5, delay: 0.1, ease: "easeInOut" },
     },
@@ -66,7 +59,7 @@ export default function Page({ params }: { params: { id: string } }) {
           animate="center"
           exit="exit"
           variants={variants}
-          className="h-full rounded lg:w-[37rem]"
+          className="h-full rounded lg:w-[37rem] relative"
         >
           <Card
             question={questions[currentIndex]}
@@ -75,11 +68,16 @@ export default function Page({ params }: { params: { id: string } }) {
               (ua) => ua.questionId === questions[currentIndex].question
             )}
           />
+          <div className="absolute bottom-6 right-8 font-medium text-lg tracking-wide bg-blur-sm ">
+            {currentIndex + 1}/{questions.length}
+          </div>
         </motion.div>
       </div>
       <section className=" flex flex-col items-center  justify-around gap-8 w-full">
         {/* Pagination Controls */}
-        <div className={`group flex  bg-neutral-900 rounded-full text-white  px-4 py-2 w-44 hover:shadow `}>
+        <div
+          className={`group flex  bg-neutral-900 rounded-full text-white  px-4 py-2 w-44 hover:shadow `}
+        >
           <button
             className="w-full justify-start  transform transition-all hover:scale-90 disabled:opacity-50  disabled:hover:scale-100"
             onClick={handlePrev}
