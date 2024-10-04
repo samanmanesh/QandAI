@@ -58,7 +58,7 @@ const Card = ({ question, onAnswer, userAnswer }: QuestionAnswerProps) => {
 
   return (
     <motion.div
-      className="h-full  p-6 space-y-4 flex flex-col justify-between items-start  rounded-lg flex-grow-0 bg-[#F3F3F3]"
+      className="h-full  px-11 py-16 space-y-4 flex flex-col justify-between   rounded-xl flex-grow-0 border border-neutral-300"
       initial="hidden"
       animate="visible"
       exit="hidden"
@@ -73,7 +73,7 @@ const Card = ({ question, onAnswer, userAnswer }: QuestionAnswerProps) => {
       }}
     >
       {/* Animate the question */}
-      <motion.section className="my-auto">
+      <motion.section className=" w-full">
         <motion.h1
           className="text-2xl font-bold mb-8 "
           variants={fadeInVariants}
@@ -103,7 +103,9 @@ const Card = ({ question, onAnswer, userAnswer }: QuestionAnswerProps) => {
               name="vehicle1"
               value={option}
               className={`appearance-none   w-5 h-5 shadow-sm rounded border border-neutral-300 flex-shrink-0  cursor-pointer hover:transition-all group-hover:ease-in-out group-hover:duration-100 group-hover:delay-75 transition-all ${
-                userAnswer?.selectedAnswer === option ? "bg-neutral-400" : "bg-white"
+                userAnswer?.selectedAnswer === option
+                  ? "bg-neutral-400"
+                  : "bg-white"
               }  `}
             />
             <span
@@ -127,7 +129,7 @@ const Card = ({ question, onAnswer, userAnswer }: QuestionAnswerProps) => {
       </motion.section>
       {/* Show answer button */}
       <motion.section className="min-h-24 w-full mt-auto flex flex-col justify-end">
-        {!showAnswer ? (
+        {/* {!showAnswer ? (
           <motion.button
             className="font-semibold text-medium  border-black p-1  mx-auto  w-full "
             onClick={() => {
@@ -162,7 +164,8 @@ const Card = ({ question, onAnswer, userAnswer }: QuestionAnswerProps) => {
           >
             Reveal Answer
           </motion.button>
-        ) : showAnswer ? (
+        )   */}
+        {showAnswer ? (
           <motion.p
             className="p-1 text-lg font-medium"
             variants={slideUpVariants}
