@@ -1,8 +1,9 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { QAResponse, UserAnswer } from "@/app/types/qa";
 import { animate } from "framer-motion/dom";
 import { filter } from "framer-motion/client";
+import CheckBox from "./CheckBox";
 
 // Define animation variants for children
 const fadeInVariants = {
@@ -56,6 +57,12 @@ const Card = ({ question, onAnswer, userAnswer }: QuestionAnswerProps) => {
   const [startAnimating, setStartAnimating] = useState(false); // Button animation state
   const buttonRef = useRef(null);
 
+  useEffect(() => {
+    //check if user answer an option and show the answer
+    if (userAnswer?.selectedAnswer) {
+      setShowAnswer(true);
+    }
+  }, [userAnswer]);
   return (
     <motion.div
       className="h-full  px-11 py-16 space-y-4 flex flex-col justify-between   rounded-xl flex-grow-0 border border-neutral-300"
@@ -88,16 +95,17 @@ const Card = ({ question, onAnswer, userAnswer }: QuestionAnswerProps) => {
           <motion.div
             key={option}
             className={` text-lg font-medium flex items-center gap-4 cursor-pointer rounded-md p-2 mb-3 group ${
-              option === question.answer && showAnswer && "bg-emerald-50  "
+              option === question.answer && showAnswer && "bg-emerald-50 "
             } ${!showAnswer && "hover:bg-slate-50 "} `}
             variants={fadeInVariants}
             custom={0.02 + index * 0.1} // incremental delay for options
             onClick={() => {
+              if (showAnswer) return;
               onAnswer(option);
               setShowAnswer(true); // Toggle the answer after the button animation is done
             }}
           >
-            <input
+            {/* <input
               type="checkbox"
               id="vehicle1"
               name="vehicle1"
@@ -107,7 +115,22 @@ const Card = ({ question, onAnswer, userAnswer }: QuestionAnswerProps) => {
                   ? "bg-neutral-400"
                   : "bg-white"
               }  `}
+            /> */}
+
+            <CheckBox
+              clicked={userAnswer?.selectedAnswer === option}
+              onClick={() => {
+                if (showAnswer) return;
+                onAnswer(option);
+                setShowAnswer(true); // Toggle the answer after the button animation is done
+              }}
+              className={`
+                ${
+                  userAnswer?.selectedAnswer !== option &&
+                  "group-hover:bg-neutral-300 transition-all "
+                }`}
             />
+
             <span
               className={`${
                 option !== question.answer && showAnswer && "opacity-75  "
