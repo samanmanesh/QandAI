@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import NextIcon from "@/app/assets/NextIcon";
 import PrevIcon from "@/app/assets/PrevIcon";
 
+
 export default function Page({ params }: { params: { id: string } }) {
   const { getQuestions, getUserAnswers, setUserAnswers } = useQAStore();
   // const getData = useQAStore((state) => state.getQuestions);
@@ -102,9 +103,9 @@ export default function Page({ params }: { params: { id: string } }) {
               key={index}
               className={`p-0.5 w-6 h-6 font-semibold text-sm rounded-full ${
                 currentIndex === index
-                  ? "bg-black text-white scale-105"
+                  ? "bg-[#2B2B2B] text-white scale-105"
                   : "scale-75 hover:scale-110"
-              } hover:bg-black hover:text-white transform transition-all`}
+              } hover:bg-[#2B2B2B] hover:text-white transform transition-all`}
               onClick={() => handleSelectQuestion(index)}
             >
               {index + 1}
