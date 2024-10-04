@@ -77,18 +77,18 @@ export default function Page({ params }: { params: { id: string } }) {
           />
         </motion.div>
       </div>
-      <section className=" flex flex-col items-center  justify-around gap-4 w-full  ">
+      <section className=" flex flex-col items-center  justify-around gap-8 w-full">
         {/* Pagination Controls */}
-        <div className="group flex  bg-neutral-900 rounded-full text-white  px-4 py-2 w-44 hover:shadow">
+        <div className={`group flex  bg-neutral-900 rounded-full text-white  px-4 py-2 w-44 hover:shadow `}>
           <button
-            className="w-full justify-start  transform transition-all hover:scale-90 "
+            className="w-full justify-start  transform transition-all hover:scale-90 disabled:opacity-50  disabled:hover:scale-100"
             onClick={handlePrev}
             disabled={questions.length === 1 || currentIndex === 0}
           >
             <PrevIcon />
           </button>
           <button
-            className="w-full flex justify-end transform transition-all hover:scale-90 hover:shadow   "
+            className="w-full flex justify-end transform transition-all hover:scale-90 hover:shadow   disabled:opacity-50  disabled:hover:scale-100  "
             onClick={handleNext}
             disabled={
               questions.length === 1 || currentIndex === questions.length - 1
@@ -98,7 +98,7 @@ export default function Page({ params }: { params: { id: string } }) {
           </button>
         </div>
         {/* Question Numbers */}
-        <div className="flex gap-1 ">
+        <div className="flex gap-2 ">
           {questions.map((_, index) => (
             <button
               key={index}
