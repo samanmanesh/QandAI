@@ -65,14 +65,14 @@ export default function Page({ params }: { params: { id: string } }) {
 
   return (
     <div className="w-full md:w-2/4 flex flex-col gap-8 items-center justify-center overflow-auto ">
-      <div className="w-full h-full md:h-2/3 flex flex-col items-center justify-around ">
+      <div className="w-full  md:h-2/3 flex flex-col items-center justify-around ">
         <motion.div
           key={currentIndex}
           initial="enter"
           animate="center"
           exit="exit"
           variants={variants}
-          className="h-full rounded lg:w-[37rem] relative"
+          className="h-full rounded  lg:w-[37rem] relative p-2"
         >
           <Card
             question={questions[currentIndex]}
@@ -81,12 +81,12 @@ export default function Page({ params }: { params: { id: string } }) {
               (ua) => ua.questionId === questions[currentIndex].question
             )}
           />
-          <div className="absolute bottom-6 right-8 font-medium text-lg tracking-wide bg-blur-sm ">
+          <div className="absolute bottom-6 right-8 font-medium text-lg tracking-wide  ">
             {currentIndex + 1}/{questions.length}
           </div>
         </motion.div>
       </div>
-      <section className=" flex flex-col items-center  justify-around gap-8 w-full">
+      <section className=" p-4 flex flex-col items-center  justify-around gap-8 w-full">
         {/* Pagination Controls */}
         <div
           className={`group flex  bg-neutral-900 rounded-full text-white  px-4 py-2 w-44 hover:shadow `}
@@ -126,9 +126,9 @@ export default function Page({ params }: { params: { id: string } }) {
               key={index}
               className={`p-0.5 w-6 h-6 font-semibold text-sm rounded-full ${
                 currentIndex === index
-                  ? "bg-[#2B2B2B] text-white scale-105"
+                  ? "bg-neutral-900 text-white scale-105"
                   : "scale-75 hover:scale-110"
-              } hover:bg-[#2B2B2B] hover:text-white transform transition-all`}
+              } hover:bg-neutral-900 hover:text-white transform transition-all`}
               onClick={() => handleSelectQuestion(index)}
             >
               {index + 1}
