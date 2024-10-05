@@ -160,13 +160,12 @@ const QAPage = () => {
             Drop your text below and watch questions come to life!
           </p>
         </section>
-        <Textarea value={inputValue} onChange={setInputValue} />
+        <Textarea value={inputValue} onChange={setInputValue} notification={"Please provide a valid input"} />
         <Button
           type="generate"
           onClick={handleSubmit}
-          className=" self-center w-full group hover:gap-1 transition  duration-100 ease-in-out"
+          className="mt-10 self-center w-full group hover:gap-1 transition  duration-100 ease-in-out"
           icon={!isLoading && <MagicIcon className="group-hover:scale-95" />}
-          notification={customError}
         >
           {!isLoading && !error && (
             <span className="group-hover:scale-95">Generate</span>
