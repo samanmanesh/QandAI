@@ -1,8 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { QAResponse, UserAnswer } from "@/app/types/qa";
-import { animate } from "framer-motion/dom";
-import { filter } from "framer-motion/client";
 import CheckBox from "./CheckBox";
 
 // Define animation variants for children

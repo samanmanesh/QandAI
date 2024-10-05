@@ -12,7 +12,7 @@ import { useRouter } from "next/navigation";
 
 const QAPage = () => {
   const [inputType] = useState<InputType>("text");
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState<string>("");
   const [questions, setQuestions] = useState<QAResponse[] | null>(null);
   // const [questions, setQuestions] = useState<QAResponse[]>([
   //   {
@@ -52,9 +52,16 @@ const QAPage = () => {
   const { generateQA, isLoading, error } = useQA();
   const router = useRouter();
   const { setQuestions: setStoreQuestions } = useQAStore();
+  const [customError, setCustomError] = useState<string | null>(null);
 
   const handleSubmit = async () => {
-    // const questions = await generateQA(inputType, inputValue);
+    // if the input value is empty string or undefined, return
+    if (!inputValue) {
+      setCustomError("Please provide a valid input");
+      return;
+    }
+
+    const questions = await generateQA(inputType, inputValue);
     //!tmp  
     // const questions = [
     //   {
@@ -91,41 +98,41 @@ const QAPage = () => {
     //       "To facilitate the residual connections and ensure the outputs have the same dimension as the input",
     //   },
     // ];
-    const questions = [
-      {
-        question:
-          "What is the most common cosmetic deformity associated with zygomatic fractures?",
-        options: [
-          "Flattening of the malar eminence",
-          "Widening of the arch",
-          "Orbital dystopia",
-          "Enophthalmos",
-        ],
-        answer: "Flattening of the malar eminence",
-      },
-      {
-        question:
-          "What is the most common functional impairment caused by zygomatic arch fractures?",
-        options: [
-          "Impingement on the temporalis muscle",
-          "Obstruction of the coronoid process",
-          "Paresthesia of the trigeminal nerve",
-          "Diplopia",
-        ],
-        answer: "Impingement on the temporalis muscle",
-      },
-      {
-        question:
-          "Which of the following is a common neurological complication of zygomatic fractures?",
-        options: [
-          "Paresthesia of the first division of the trigeminal nerve",
-          "Dysesthesia of the second division of the trigeminal nerve",
-          "Paralysis of the facial nerve",
-          "Numbness of the mandibular nerve",
-        ],
-        answer: "Dysesthesia of the second division of the trigeminal nerve",
-      },
-    ];
+    // const questions = [
+    //   {
+    //     question:
+    //       "What is the most common cosmetic deformity associated with zygomatic fractures?",
+    //     options: [
+    //       "Flattening of the malar eminence",
+    //       "Widening of the arch",
+    //       "Orbital dystopia",
+    //       "Enophthalmos",
+    //     ],
+    //     answer: "Flattening of the malar eminence",
+    //   },
+    //   {
+    //     question:
+    //       "What is the most common functional impairment caused by zygomatic arch fractures?",
+    //     options: [
+    //       "Impingement on the temporalis muscle",
+    //       "Obstruction of the coronoid process",
+    //       "Paresthesia of the trigeminal nerve",
+    //       "Diplopia",
+    //     ],
+    //     answer: "Impingement on the temporalis muscle",
+    //   },
+    //   {
+    //     question:
+    //       "Which of the following is a common neurological complication of zygomatic fractures?",
+    //     options: [
+    //       "Paresthesia of the first division of the trigeminal nerve",
+    //       "Dysesthesia of the second division of the trigeminal nerve",
+    //       "Paralysis of the facial nerve",
+    //       "Numbness of the mandibular nerve",
+    //     ],
+    //     answer: "Dysesthesia of the second division of the trigeminal nerve",
+    //   },
+    // ];
 
     console.log("Questions:", questions);
 
@@ -157,8 +164,9 @@ const QAPage = () => {
         <Button
           type="generate"
           onClick={handleSubmit}
-          className="mt-10 self-center w-full group hover:gap-1 transition  duration-100 ease-in-out"
+          className=" self-center w-full group hover:gap-1 transition  duration-100 ease-in-out"
           icon={!isLoading && <MagicIcon className="group-hover:scale-95" />}
+          notification={customError}
         >
           {!isLoading && !error && (
             <span className="group-hover:scale-95">Generate</span>
