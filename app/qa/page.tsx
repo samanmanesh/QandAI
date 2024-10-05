@@ -147,7 +147,7 @@ const QAPage = () => {
         <section className="flex flex-col gap-2">
           <h1 className="text-4xl font-medium">
             Welcome to
-            <span className="text-4xl font-semibold"> QandAI, </span>
+            <span className="text-4xl font-semibold"> Q&AI, </span>
           </h1>
           <p className="text-2xl font-medium text-left">
             Drop your text below and watch questions come to life!
@@ -157,11 +157,11 @@ const QAPage = () => {
         <Button
           type="generate"
           onClick={handleSubmit}
-          className="mt-10 self-center w-full group hover:shadow-2xl hover:shadow-violet-400 transition-transform  ease-in-out "
-          icon={!isLoading && <MagicIcon className="group-hover:scale-75" />}
+          className="mt-10 self-center w-full group hover:gap-1 transition  duration-100 ease-in-out"
+          icon={!isLoading && <MagicIcon className="group-hover:scale-95" />}
         >
           {!isLoading && !error && (
-            <span className="group-hover:scale-105">Generate</span>
+            <span className="group-hover:scale-95">Generate</span>
           )}
           {isLoading && (
             <svg
