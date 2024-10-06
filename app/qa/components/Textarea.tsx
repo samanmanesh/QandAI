@@ -16,7 +16,7 @@ const Textarea = ({ value, onChange, notification }: TextareaProps) => {
       value={value}
       
     />
-    {notification && (
+    {!notification && (
     <div className="absolute top-full  rounded-md py-1 px-2   font-medium text-lg text-rose-600 ">
       {notification}
     </div>
