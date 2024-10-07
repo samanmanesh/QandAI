@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 interface TextareaProps {
   value: string;
   onChange: (value: string) => void;
@@ -6,7 +8,11 @@ interface TextareaProps {
 
 const Textarea = ({ value, onChange, notification }: TextareaProps) => {
   return (
-    <div className="relative">
+    <motion.div className="relative"
+      initial={{ opacity: 0 , filter: "blur(6px)"}}
+      animate={{ opacity: 1, filter: "blur(0px)"}}
+      transition={{ duration: 0.7, delay: 0.1}}
+    >
       <textarea
         // className="w-full aspect-[16/7] resize-none rounded-xl overflow-auto outline-none p-4 shadow-sm bg-gradient-to-tr from-[#221c2cfd] via-[#1b1623f1] to-80% to-[#1b1623d9]   text-white text-base font-medium tracking-wide custom-scrollbar"
         className="w-full aspect-[16/7] resize-none rounded-xl overflow-auto outline-none p-4   border border-neutral-300 opacity-95 text-base font-medium tracking-wide custom-scrollbar shadow-sm"
@@ -21,7 +27,7 @@ const Textarea = ({ value, onChange, notification }: TextareaProps) => {
           {notification}
         </div>
       )}
-    </div>
+    </motion.div>
   );
 };
 

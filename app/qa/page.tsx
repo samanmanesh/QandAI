@@ -31,7 +31,7 @@ const QAPage = () => {
       return;
     }
 
-    if(inputValue.length > 1000){
+    if (inputValue.length > 1000) {
       setCustomError("Input value should be less than 1000 characters long.");
       return;
     }
@@ -127,13 +127,23 @@ const QAPage = () => {
     <BlobBackground className=" h-full w-full lg:w-2/4 flex flex-col gap-3 justify-center items-center">
       <div className="relative min-w-12 flex flex-col gap-6 w-[85%] ">
         <section className="flex flex-col gap-1">
-          <h1 className="text-4xl font-medium text-neutral-900 ">
+          <motion.h1
+            className="text-4xl font-medium text-neutral-900 "
+            initial={{ opacity: 0, filter: "blur(6px)" }}
+            animate={{ opacity: 1, filter: "blur(0px)" }}
+            transition={{ duration: 0.3, delay: 0.1 }}
+          >
             Welcome to
             <span className="text-4xl font-semibold font-serif"> Q&AI, </span>
-          </h1>
-          <p className="text-2xl font-medium text-neutral-900 text-left">
+          </motion.h1>
+          <motion.p
+            className="text-2xl font-medium text-neutral-900 text-left"
+            initial={{ opacity: 0, filter: "blur(6px)" }}
+            animate={{ opacity: 1, filter: "blur(0px)" }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
             Drop your text below and watch questions come to life!
-          </p>
+          </motion.p>
         </section>
         <Textarea
           value={inputValue}
@@ -143,50 +153,59 @@ const QAPage = () => {
           }}
           notification={"Please provide a valid input"}
         />
-        <Button
-          type="generate"
-          onClick={handleSubmit}
-          className={`md:mt-10 self-center w-full group hover:gap-1 transition  duration-100 ease-in-out ${
-            isLoading && "bg-[#282232]"
-          }`}
-          icon={!isLoading && <MagicIcon className="group-hover:scale-95 w-5 " />}
+        <motion.section
+          className="flex flex-col gap-1 w-full"
+          initial={{ opacity: 0, filter: "blur(6px)" }}
+          animate={{ opacity: 1, filter: "blur(0px)" }}
+          transition={{ duration: 0.9, delay: 0.2 }}
         >
-          {!isLoading && !error && (
-            <span className="group-hover:scale-95">Generate</span>
-          )}
-          {isLoading && (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width={24}
-              height={24}
-              fill="none"
-              viewBox="0 0 48 48"
-              className="animate-spin"
-            >
-              <path
-                stroke="url(#a)"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={8}
-                d="M4 24c0 11.046 8.954 20 20 20s20-8.954 20-20S35.046 4 24 4"
-              />
-              <defs>
-                <linearGradient
-                  id="a"
-                  x1={24}
-                  x2={4}
-                  y1={4}
-                  y2={27}
-                  gradientUnits="userSpaceOnUse"
-                >
-                  <stop stopColor="#210C4E" />
-                  <stop offset={0.503866} stopColor="#4C426C" />
-                  <stop offset={1} stopColor="#826896" />
-                </linearGradient>
-              </defs>
-            </svg>
-          )}
-        </Button>
+          <Button
+            type="generate"
+            onClick={handleSubmit}
+            className={`md:mt-10 self-center w-full group hover:gap-1 transition  duration-100 ease-in-out ${
+              isLoading && "bg-[#282232]"
+            }`}
+            icon={
+              !isLoading && <MagicIcon className="group-hover:scale-95 w-5 " />
+            }
+          >
+            {!isLoading && !error && (
+              <span className="group-hover:scale-95">Generate</span>
+            )}
+            {isLoading && (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width={24}
+                height={24}
+                fill="none"
+                viewBox="0 0 48 48"
+                className="animate-spin"
+              >
+                <path
+                  stroke="url(#a)"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={8}
+                  d="M4 24c0 11.046 8.954 20 20 20s20-8.954 20-20S35.046 4 24 4"
+                />
+                <defs>
+                  <linearGradient
+                    id="a"
+                    x1={24}
+                    x2={4}
+                    y1={4}
+                    y2={27}
+                    gradientUnits="userSpaceOnUse"
+                  >
+                    <stop stopColor="#210C4E" />
+                    <stop offset={0.503866} stopColor="#4C426C" />
+                    <stop offset={1} stopColor="#826896" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            )}
+          </Button>
+        </motion.section>
       </div>
       {customError && (
         <motion.div
