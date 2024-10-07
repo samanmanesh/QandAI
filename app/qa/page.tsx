@@ -36,7 +36,7 @@ const QAPage = () => {
       return;
     }
 
-    // const questions = await generateQA(inputType, inputValue);
+    const questions = await generateQA(inputType, inputValue);
     //!tmp
     // const questions = [
     //   {
@@ -73,41 +73,41 @@ const QAPage = () => {
     //       "To facilitate the residual connections and ensure the outputs have the same dimension as the input",
     //   },
     // ];
-    const questions = [
-      {
-        question:
-          "What is the most common cosmetic deformity associated with zygomatic fractures?",
-        options: [
-          "Flattening of the malar eminence",
-          "Widening of the arch",
-          "Orbital dystopia",
-          "Enophthalmos",
-        ],
-        answer: "Flattening of the malar eminence",
-      },
-      {
-        question:
-          "What is the most common functional impairment caused by zygomatic arch fractures?",
-        options: [
-          "Impingement on the temporalis muscle",
-          "Obstruction of the coronoid process",
-          "Paresthesia of the trigeminal nerve",
-          "Diplopia",
-        ],
-        answer: "Impingement on the temporalis muscle",
-      },
-      {
-        question:
-          "Which of the following is a common neurological complication of zygomatic fractures?",
-        options: [
-          "Paresthesia of the first division of the trigeminal nerve",
-          "Dysesthesia of the second division of the trigeminal nerve",
-          "Paralysis of the facial nerve",
-          "Numbness of the mandibular nerve",
-        ],
-        answer: "Dysesthesia of the second division of the trigeminal nerve",
-      },
-    ];
+    // const questions = [
+    //   {
+    //     question:
+    //       "What is the most common cosmetic deformity associated with zygomatic fractures?",
+    //     options: [
+    //       "Flattening of the malar eminence",
+    //       "Widening of the arch",
+    //       "Orbital dystopia",
+    //       "Enophthalmos",
+    //     ],
+    //     answer: "Flattening of the malar eminence",
+    //   },
+    //   {
+    //     question:
+    //       "What is the most common functional impairment caused by zygomatic arch fractures?",
+    //     options: [
+    //       "Impingement on the temporalis muscle",
+    //       "Obstruction of the coronoid process",
+    //       "Paresthesia of the trigeminal nerve",
+    //       "Diplopia",
+    //     ],
+    //     answer: "Impingement on the temporalis muscle",
+    //   },
+    //   {
+    //     question:
+    //       "Which of the following is a common neurological complication of zygomatic fractures?",
+    //     options: [
+    //       "Paresthesia of the first division of the trigeminal nerve",
+    //       "Dysesthesia of the second division of the trigeminal nerve",
+    //       "Paralysis of the facial nerve",
+    //       "Numbness of the mandibular nerve",
+    //     ],
+    //     answer: "Dysesthesia of the second division of the trigeminal nerve",
+    //   },
+    // ];
 
     console.log("Questions:", questions);
 

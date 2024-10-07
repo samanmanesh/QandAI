@@ -93,7 +93,7 @@ export default function Page({ params }: { params: { id: string } }) {
             onClick={handlePrev}
             disabled={questions.length === 1 || currentIndex === 0}
           >
-            <PrevIcon className="stroke-current"/>
+            <PrevIcon className="stroke-current" />
           </button>
           {
             //if user has answered all questions we show the restart button
@@ -113,7 +113,7 @@ export default function Page({ params }: { params: { id: string } }) {
               questions.length === 1 || currentIndex === questions.length - 1
             }
           >
-            <NextIcon className="stroke-current"/>
+            <NextIcon className="stroke-current" />
           </button>
         </div>
 

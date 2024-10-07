@@ -24,7 +24,7 @@ const Input = ({ clicked, onClick, className, disabled }: Props) => {
   return (
     <motion.div
       className={cn(
-        `w-4 h-4 md:w-6 md:h-6 rounded md:rounded-md  flex flex-shrink-0 items-center justify-center ${
+        `w-4 h-4 md:w-6 md:h-6 rounded md:rounded-md flex flex-shrink-0 items-center justify-center ${
           clicked ? "bg-[#2B2B2B]" : "bg-[#DDDDDD]"
         }`,
         className

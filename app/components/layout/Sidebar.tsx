@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import QAIcon from "@/app/assets/QAIIcon";
-import { BlobBackground } from "@/app/qa/components/BlobBackground";
 
 const Sidebar = () => {
   //we want ot find if we are on the [id] page
@@ -14,7 +13,6 @@ const Sidebar = () => {
   // Check if the current path matches /qa/something (but not just /qa)
   const showSidebar = pathname && pathname.match(/^\/qa\/[^/]+$/);
 
-  // console.log(path);
   const [clicked, setClicked] = useState<boolean>(false);
   const handleOnClick = () => {
     setClicked(true);

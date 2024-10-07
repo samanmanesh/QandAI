@@ -8,9 +8,8 @@ const config: Config = {
   ],
   theme: {
     fontFamily: {
-      'sans': ['ui-sans-serif', 'system-ui'],
-      'serif': ['ui-serif', 'Inter', 'Georgia'],
-    
+      sans: ["ui-sans-serif", "system-ui"],
+      serif: ["ui-serif", "Inter", "Georgia"],
     },
     extend: {
       animation: {
