@@ -9,24 +9,21 @@ import PrevIcon from "@/app/assets/PrevIcon";
 import RotateIcon from "@/app/assets/RotateIcon";
 import Link from "next/link";
 
+import { useRouter } from "next/navigation";
+
 export default function Page({ params }: { params: { id: string } }) {
   const { getQuestions, getUserAnswers, setUserAnswers, restedUserAnswers } =
     useQAStore();
   // const getData = useQAStore((state) => state.getQuestions);
   const questions: QAResponse[] | undefined = getQuestions(params.id);
   const userAnswers: UserAnswer[] | undefined = getUserAnswers(params.id);
-
   const [currentIndex, setCurrentIndex] = useState(0);
+  const router = useRouter();
 
-
-
-  if (!questions) return <div className="flex flex-col gap-4 w-full md:w-2/4 items-center justify-center">
-    <h1 className="text-3xl font-bold mb-4">No questions found ‼️</h1>
-    <p className="text-lg font-medium">Please generate questions first</p>
-    <Link href="/qa">
-      <button className="text-md font-bold bg-neutral-900 rounded-lg text-white py-2 px-4 ">Return to generation page</button>
-    </Link>
-  </div>;
+  if (!questions) {
+    // push user back to generation page if no questions are found
+    return router.push("/qa");
+  }
 
   const handleAnswer = (selectedAnswer: string) => {
     setUserAnswers(params.id, questions[currentIndex].question, selectedAnswer);
@@ -65,14 +62,14 @@ export default function Page({ params }: { params: { id: string } }) {
 
   return (
     <div className="w-full md:w-2/4 flex flex-col gap-8 items-center justify-center overflow-auto ">
-      <div className="w-full  md:h-2/3 flex flex-col items-center justify-around ">
+      <div className="w-full h-full md:h-2/3 flex flex-col items-center justify-around ">
         <motion.div
           key={currentIndex}
           initial="enter"
           animate="center"
           exit="exit"
           variants={variants}
-          className="h-full rounded  lg:w-[37rem] relative p-2"
+          className="h-full rounded  lg:w-3/4 relative p-2"
         >
           <Card
             question={questions[currentIndex]}

@@ -13,7 +13,7 @@ const Button = ({ onClick, type, children, className, icon }: ButtonProps) => {
   return (
     <button
       className={cn(
-        `bg-neutral-900 hover:bg-[#282232] rounded-full  py-2 px-6 flex gap-2 text-white font-semibold justify-center max-w-64 min-w-14 hover:shadow-md transition-transform duration-300 ease-in-out`,
+        `bg-neutral-900 hover:bg-[#282232] rounded-full  py-2 px-6 flex gap-2 text-white font-medium md:font-semibold justify-center max-w-36 md:max-w-64 min-w-14 hover:shadow-md transition-transform duration-300 ease-in-out`,
         className
       )}
       onClick={onClick}

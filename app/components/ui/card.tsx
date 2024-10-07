@@ -41,7 +41,7 @@ const Card = ({ question, onAnswer, userAnswer }: QuestionAnswerProps) => {
   }, [userAnswer]);
   return (
     <motion.div
-      className="h-full px-4 py-4 md:px-11 md:py-16 space-y-4 flex flex-col justify-between   rounded-xl flex-grow-0 border border-neutral-300"
+      className="h-full overflow-auto px-6 py-8 md:px-8 md:py-12 lg:px-11 lg:py-16 space-y-4 flex flex-col justify-between   rounded-xl flex-grow-0 border border-neutral-300"
       initial="hidden"
       animate="visible"
       exit="hidden"
@@ -58,7 +58,7 @@ const Card = ({ question, onAnswer, userAnswer }: QuestionAnswerProps) => {
       {/* Animate the question */}
       <motion.section className=" w-full">
         <motion.h1
-          className="text-xl md:text-2xl font-bold mb-8 "
+          className="text-lg md:text-xl lg:text-2xl font-bold mb-8 "
           variants={fadeInVariants}
           custom={0.1} // delay for h1
         >
@@ -69,7 +69,7 @@ const Card = ({ question, onAnswer, userAnswer }: QuestionAnswerProps) => {
         {question.options.map((option, index) => (
           <motion.div
             key={option}
-            className={` text-base md:text-lg font-medium flex items-center gap-4 cursor-pointer rounded-md p-2 mb-3 group  
+            className={` text-base lg:text-lg font-medium flex items-center gap-4 cursor-pointer rounded-md p-2 mb-3 group  
               ${
                 option === question.answer &&
                 showAnswer &&

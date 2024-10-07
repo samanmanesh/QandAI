@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import QAIcon from "@/app/assets/QAIIcon";
+import { BlobBackground } from "@/app/qa/components/BlobBackground";
 
 const Sidebar = () => {
   //we want ot find if we are on the [id] page
@@ -38,14 +39,8 @@ const Sidebar = () => {
           },
         }}
       >
-        <Link
-          href="/qa"
-          // className={` hover:scale-105 transform transition-all
-          //     ${clicked ? "scale-95" : "scale-100"}
-          //   `}
-          // onClick={handleOnClick}
-        >
-          <QAIcon className="m-4"/>
+        <Link href="/qa">
+          <QAIcon className="m-4" />
         </Link>
         {showSidebar && (
           <div className="w-fit mt-60 mx-auto ">
@@ -53,7 +48,7 @@ const Sidebar = () => {
               href="/qa"
               className={`flex gap-2 text-base font-medium hover:opacity-75 transform transition-all 
                 ${clicked ? "scale-95" : "scale-100"} 
-              `}
+                `}
               onClick={handleOnClick}
             >
               <ReturnIcon />

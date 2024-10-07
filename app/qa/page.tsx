@@ -119,11 +119,7 @@ const QAPage = () => {
   };
 
   return (
-    <BlobBackground className=" h-full w-full md:w-2/4 flex flex-col gap-3 justify-center items-center">
-      {/* <Spotlight
-        className="-top-30 left-0 md:left-60 md:-top-10  "
-        fill="#a78bff"
-      /> */}
+    <BlobBackground className=" h-full w-full lg:w-2/4 flex flex-col gap-3 justify-center items-center">
       <div className="relative min-w-12 flex flex-col gap-6 w-[85%] ">
         <section className="flex flex-col gap-1">
           <h1 className="text-4xl font-medium text-neutral-900 ">
@@ -145,7 +141,7 @@ const QAPage = () => {
         <Button
           type="generate"
           onClick={handleSubmit}
-          className={`mt-10 self-center w-full group hover:gap-1 transition  duration-100 ease-in-out ${
+          className={`md:mt-10 self-center w-full group hover:gap-1 transition  duration-100 ease-in-out ${
             isLoading && "bg-[#282232]"
           }`}
           icon={!isLoading && <MagicIcon className="group-hover:scale-95" />}
@@ -189,12 +185,12 @@ const QAPage = () => {
       </div>
       {customError && (
         <motion.div
-          className="px-4 py-2  bg-white text-rose-600  rounded-md  font-base absolute bottom-8  flex items-center justify-center gap-1 "
+          className="px-4 py-2  bg-white text-rose-700  rounded-md  font-base absolute bottom-8  flex items-center justify-center gap-1 "
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.1 }}
         >
-          <ErrorIcon className="w-6 h-6 inline-block  fill-rose-600" />
+          <ErrorIcon className="w-6 h-6 inline-block  fill-rose-700" />
           {customError}{" "}
         </motion.div>
       )}
