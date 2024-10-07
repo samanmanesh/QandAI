@@ -11,6 +11,7 @@ import { useQAStore } from "../store/qaStore";
 import { useRouter } from "next/navigation";
 import { Spotlight } from "./components/SpotLight";
 import { AuroraBackground, BlobBackground } from "./components/BlobBackground";
+import { motion } from "framer-motion";
 
 const QAPage = () => {
   const [inputType] = useState<InputType>("text");
@@ -156,13 +157,13 @@ const QAPage = () => {
         className="-top-30 left-0 md:left-60 md:-top-10  "
         fill="#a78bff"
       /> */}
-      <div className="min-w-12 flex flex-col gap-12 w-[85%] ">
-        <section className="flex flex-col gap-2">
-          <h1 className="text-4xl font-medium">
+      <div className="relative min-w-12 flex flex-col gap-6 w-[85%] ">
+        <section className="flex flex-col gap-1">
+          <h1 className="text-4xl font-medium text-neutral-900 ">
             Welcome to
-            <span className="text-4xl font-semibold"> Q&AI, </span>
+            <span className="text-4xl font-semibold font-serif"> Q&AI, </span>
           </h1>
-          <p className="text-2xl font-medium text-left">
+          <p className="text-2xl font-medium text-neutral-900 text-left">
             Drop your text below and watch questions come to life!
           </p>
         </section>
@@ -174,7 +175,9 @@ const QAPage = () => {
         <Button
           type="generate"
           onClick={handleSubmit}
-          className="mt-10 self-center w-full group hover:gap-1 transition  duration-100 ease-in-out"
+          className={`mt-10 self-center w-full group hover:gap-1 transition  duration-100 ease-in-out ${
+            isLoading && "bg-[#282232]"
+          }`}
           icon={!isLoading && <MagicIcon className="group-hover:scale-95" />}
         >
           {!isLoading && !error && (
@@ -214,6 +217,16 @@ const QAPage = () => {
           )}
         </Button>
       </div>
+      {customError && (
+        <motion.div className="px-4 py-2 bg-slate-50 rounded text-black font-medium absolute bottom-12"
+          initial={{ opacity: 0 , y: 50}}
+          animate={{ opacity: 1 , y: 0}}
+          transition={{ duration: 0.1 }}
+        >
+          {" "}
+          {customError}{" "}
+        </motion.div>
+      )}
 
       {/* <h1 className="text-4xl font-bold">QandAI</h1>
       <textarea

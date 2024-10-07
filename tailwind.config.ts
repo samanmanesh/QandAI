@@ -7,6 +7,11 @@ const config: Config = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    fontFamily: {
+      'sans': ['ui-sans-serif', 'system-ui'],
+      'serif': ['ui-serif', 'Inter', 'Georgia'],
+    
+    },
     extend: {
       animation: {
         spotlight: "spotlight 2s ease .75s 1 forwards",
