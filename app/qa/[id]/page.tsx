@@ -69,7 +69,7 @@ export default function Page({ params }: { params: { id: string } }) {
           animate="center"
           exit="exit"
           variants={variants}
-          className="h-full rounded  lg:w-3/4 relative p-2"
+          className="h-full rounded  xl:w-2/3 relative p-2"
         >
           <Card
             question={questions[currentIndex]}
