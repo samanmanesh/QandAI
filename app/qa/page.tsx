@@ -9,6 +9,8 @@ import MagicIcon from "../assets/MagicIcon";
 import { generateId } from "../utils/generateId";
 import { useQAStore } from "../store/qaStore";
 import { useRouter } from "next/navigation";
+import { Spotlight } from "./components/SpotLight";
+import { AuroraBackground, BlobBackground } from "./components/BlobBackground";
 
 const QAPage = () => {
   const [inputType] = useState<InputType>("text");
@@ -62,7 +64,7 @@ const QAPage = () => {
     }
 
     // const questions = await generateQA(inputType, inputValue);
-    //!tmp  
+    //!tmp
     // const questions = [
     //   {
     //     question: "What is the composition of the encoder?",
@@ -149,8 +151,12 @@ const QAPage = () => {
   };
 
   return (
-    <div className=" h-full w-full md:w-2/4 flex flex-col gap-3 justify-center items-center   ">
-      <div className="min-w-12 flex flex-col gap-12 w-[85%]">
+    <BlobBackground className=" h-full w-full md:w-2/4 flex flex-col gap-3 justify-center items-center">
+      {/* <Spotlight
+        className="-top-30 left-0 md:left-60 md:-top-10  "
+        fill="#a78bff"
+      /> */}
+      <div className="min-w-12 flex flex-col gap-12 w-[85%] ">
         <section className="flex flex-col gap-2">
           <h1 className="text-4xl font-medium">
             Welcome to
@@ -160,7 +166,11 @@ const QAPage = () => {
             Drop your text below and watch questions come to life!
           </p>
         </section>
-        <Textarea value={inputValue} onChange={setInputValue} notification={"Please provide a valid input"} />
+        <Textarea
+          value={inputValue}
+          onChange={setInputValue}
+          notification={"Please provide a valid input"}
+        />
         <Button
           type="generate"
           onClick={handleSubmit}
@@ -207,36 +217,36 @@ const QAPage = () => {
 
       {/* <h1 className="text-4xl font-bold">QandAI</h1>
       <textarea
-        className="border rounded bg-slate-100 p-2 w-96 min-h-48 "
-        value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
+      className="border rounded bg-slate-100 p-2 w-96 min-h-48 "
+      value={inputValue}
+      onChange={(e) => setInputValue(e.target.value)}
       />
       <button
-        className="border  bg-black text-white font-medium p-2 rounded-md"
-        onClick={handleSubmit}
+      className="border  bg-black text-white font-medium p-2 rounded-md"
+      onClick={handleSubmit}
       >
-        {" "}
-        Click to generate
+      {" "}
+      Click to generate
       </button>
-
+      
       {isLoading && <div>Loading...</div>}
       {error && <div>Error: {error}</div>}
       {questions && (
         <div>
-          {questions.map((q, i) => (
-            <div key={i} className="border p-2 rounded-md">
-              <div>{q.question}</div>
-              <div>
-                {q.options.map((o, j) => (
-                  <div key={j}>{o}</div>
-                ))}
-              </div>
-              <div>Answer: {q.answer}</div>
+        {questions.map((q, i) => (
+          <div key={i} className="border p-2 rounded-md">
+          <div>{q.question}</div>
+          <div>
+          {q.options.map((o, j) => (
+            <div key={j}>{o}</div>
+            ))}
             </div>
-          ))}
-        </div>
-      )} */}
-    </div>
+            <div>Answer: {q.answer}</div>
+            </div>
+            ))}
+            </div>
+            )} */}
+    </BlobBackground>
   );
 };
 

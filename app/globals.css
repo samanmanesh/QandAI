@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -17,7 +26,7 @@
 body {
   /* color: var(--foreground); */
   /* background: var(--background); */
-  font-family:  Geist, Arial, Helvetica, sans-serif;
+  font-family: Geist, Arial, Helvetica, sans-serif;
 }
 
 /* For WebKit browsers (Chrome, Safari, etc.) */
