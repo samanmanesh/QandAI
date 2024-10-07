@@ -10,7 +10,6 @@ const MagicIcon: FunctionComponent<HTMLAttributes<HTMLOrSVGElement>> = (
     fill="none"
     viewBox="0 0 22 23"
     {...props}
-    className=""
   >
     <path
       fill="#fff"

@@ -31,6 +31,11 @@ const QAPage = () => {
       return;
     }
 
+    if(inputValue.length > 1000){
+      setCustomError("Input value should be less than 1000 characters long.");
+      return;
+    }
+
     // const questions = await generateQA(inputType, inputValue);
     //!tmp
     // const questions = [
@@ -144,7 +149,7 @@ const QAPage = () => {
           className={`md:mt-10 self-center w-full group hover:gap-1 transition  duration-100 ease-in-out ${
             isLoading && "bg-[#282232]"
           }`}
-          icon={!isLoading && <MagicIcon className="group-hover:scale-95" />}
+          icon={!isLoading && <MagicIcon className="group-hover:scale-95 w-5 " />}
         >
           {!isLoading && !error && (
             <span className="group-hover:scale-95">Generate</span>

@@ -78,7 +78,7 @@ export default function Page({ params }: { params: { id: string } }) {
               (ua) => ua.questionId === questions[currentIndex].question
             )}
           />
-          <div className="absolute bottom-6 right-8 font-medium text-lg tracking-wide  ">
+          <div className="absolute bottom-6 right-8 font-medium text-lg tracking-wide font-serif  ">
             {currentIndex + 1}/{questions.length}
           </div>
         </motion.div>
@@ -86,14 +86,14 @@ export default function Page({ params }: { params: { id: string } }) {
       <section className=" p-4 flex flex-col items-center  justify-around gap-8 w-full">
         {/* Pagination Controls */}
         <div
-          className={`group flex  bg-neutral-900 rounded-full text-white  px-4 py-2 w-44 hover:shadow `}
+          className={`group flex  bg-neutral-900 rounded-full text-white  px-3 py-2 w-52 hover:shadow `}
         >
           <button
             className="w-full justify-start  transform transition-all hover:scale-90 disabled:opacity-50  disabled:hover:scale-100"
             onClick={handlePrev}
             disabled={questions.length === 1 || currentIndex === 0}
           >
-            <PrevIcon />
+            <PrevIcon className="stroke-current"/>
           </button>
           {
             //if user has answered all questions we show the restart button
@@ -102,7 +102,7 @@ export default function Page({ params }: { params: { id: string } }) {
                 className="text-white transform transition-all hover:scale-90   disabled:hover:scale-100"
                 onClick={handleRestartAnswers}
               >
-                <RotateIcon />
+                <RotateIcon className="stroke-current" />
               </button>
             )
           }
@@ -113,7 +113,7 @@ export default function Page({ params }: { params: { id: string } }) {
               questions.length === 1 || currentIndex === questions.length - 1
             }
           >
-            <NextIcon />
+            <NextIcon className="stroke-current"/>
           </button>
         </div>
 
