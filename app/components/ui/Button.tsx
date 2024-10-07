@@ -1,4 +1,4 @@
-import { clsx } from "clsx";
+import { cn } from "@/app/utils/cn";
 import React from "react";
 
 type ButtonProps = {
@@ -12,7 +12,7 @@ type ButtonProps = {
 const Button = ({ onClick, type, children, className, icon }: ButtonProps) => {
   return (
     <button
-      className={clsx(
+      className={cn(
         `bg-neutral-900 hover:bg-[#282232] rounded-full  py-2 px-6 flex gap-2 text-white font-semibold justify-center max-w-64 min-w-14 hover:shadow-md transition-transform duration-300 ease-in-out`,
         className
       )}

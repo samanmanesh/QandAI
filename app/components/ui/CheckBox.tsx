@@ -1,4 +1,4 @@
-import clsx from "clsx";
+import { cn } from "@/app/utils/cn";
 import { motion } from "framer-motion";
 import React, { useState } from "react";
 
@@ -23,7 +23,7 @@ const Input = ({ clicked, onClick, className, disabled }: Props) => {
 
   return (
     <motion.div
-      className={clsx(
+      className={cn(
         `w-4 h-4 md:w-6 md:h-6 rounded md:rounded-lg  flex flex-shrink-0 items-center justify-center ${
           clicked ? "bg-[#2B2B2B]" : "bg-[#DDDDDD]"
         }`,
