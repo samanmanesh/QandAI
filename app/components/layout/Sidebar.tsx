@@ -43,7 +43,20 @@ const Sidebar = () => {
           <QAIcon className="m-4" />
         </Link>
         {showSidebar && (
-          <div className="w-fit mt-60 mx-auto ">
+          <motion.div
+            className="w-fit mt-60 mx-auto "
+            initial={{ opacity: 0, x: -50, filter: "blur(6px)" }}
+            animate={{
+              opacity: 1,
+              x: 0,
+              filter: "blur(0px)",
+              transition: {
+                delay: 0.1,
+                duration: 0.2,
+                ease: "easeInOut",
+              },
+            }}
+          >
             <Link
               href="/qa"
               className={`flex gap-2 text-base font-medium hover:opacity-75 transform transition-all 
@@ -56,7 +69,7 @@ const Sidebar = () => {
                 Return to generation page
               </text>
             </Link>
-          </div>
+          </motion.div>
         )}
       </motion.div>
     </div>
