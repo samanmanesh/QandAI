@@ -14,7 +14,7 @@ const config: Config = {
     extend: {
       animation: {
         spotlight: "spotlight 2s ease .75s 1 forwards",
-        blob: "blob 7s ease-in-out infinite",
+        blob: "blob 6s ease-in-out infinite",
       },
       keyframes: {
         spotlight: {

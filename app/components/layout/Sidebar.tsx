@@ -38,7 +38,7 @@ const Sidebar = () => {
         }}
       >
         <Link href="/qa">
-          <QAIcon className="m-4" />
+          <QAIcon className="ml-6 mt-4 w-12" />
         </Link>
         {showSidebar && (
           <motion.div

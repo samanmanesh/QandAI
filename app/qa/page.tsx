@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import useQA from "../hooks/useQA";
-import { InputType, QAResponse } from "../types/qa";
+import { InputType } from "../types/qa";
 import Textarea from "./components/Textarea";
 import Button from "../components/ui/Button";
 import MagicIcon from "../assets/MagicIcon";
@@ -16,7 +16,7 @@ import ErrorIcon from "../assets/ErrorIcon";
 const QAPage = () => {
   const [inputType] = useState<InputType>("text");
   const [inputValue, setInputValue] = useState<string>("");
-  const [questions, setQuestions] = useState<QAResponse[] | null>(null);
+  // const [questions, setQuestions] = useState<QAResponse[] | null>(null);
 
   const { generateQA, isLoading, error } = useQA();
   const router = useRouter();
@@ -114,7 +114,7 @@ const QAPage = () => {
     if (!isLoading && !error) setInputValue("");
 
     if (!questions) return;
-    setQuestions(questions);
+
     //generate id
     const id = generateId();
     // set questions in store
