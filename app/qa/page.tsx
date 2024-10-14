@@ -113,13 +113,17 @@ const QAPage = () => {
 
     if (!isLoading && !error) setInputValue("");
 
-    if (!questions) return;
+    if (!questions) {
+      setCustomError(
+        "An error occurred while generating questions. Please try again later."
+      );
+      return;
+    }
 
     //generate id
     const id = generateId();
     // set questions in store
     setStoreQuestions(id, questions);
-
     router.push(`/qa/${id}`);
   };
 
