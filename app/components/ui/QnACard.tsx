@@ -30,7 +30,7 @@ interface QuestionAnswerProps {
   onAnswer: (selectedAnswer: string) => void;
   userAnswer?: UserAnswer;
 }
-const Card = ({ question, onAnswer, userAnswer }: QuestionAnswerProps) => {
+const QnACard = ({ question, onAnswer, userAnswer }: QuestionAnswerProps) => {
   const [showAnswer, setShowAnswer] = useState(false);
 
   useEffect(() => {
@@ -139,4 +139,4 @@ const Card = ({ question, onAnswer, userAnswer }: QuestionAnswerProps) => {
   );
 };
 
-export default Card;
+export default QnACard;
