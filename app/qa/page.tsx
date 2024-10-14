@@ -31,8 +31,8 @@ const QAPage = () => {
       return;
     }
 
-    if (inputValue.length > 1000) {
-      setCustomError("Input value should be less than 1000 characters long.");
+    if (inputValue.length > 2000) {
+      setCustomError("Input value should be less than 2000 characters long.");
       return;
     }
 
