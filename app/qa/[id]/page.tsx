@@ -1,5 +1,4 @@
 "use client";
-
 import { useQAStore } from "@/app/store/qaStore";
 import { QAResponse, UserAnswer } from "@/app/types/qa";
 import { useState } from "react";
@@ -7,9 +6,8 @@ import { motion } from "framer-motion";
 import NextIcon from "@/app/assets/NextIcon";
 import PrevIcon from "@/app/assets/PrevIcon";
 import RotateIcon from "@/app/assets/RotateIcon";
-
 import { useRouter } from "next/navigation";
-import Card from "@/app/components/ui/Card";
+import Card  from "@/app/components/ui/Card"
 
 export default function Page({ params }: { params: { id: string } }) {
   const { getQuestions, getUserAnswers, setUserAnswers, restedUserAnswers } =
