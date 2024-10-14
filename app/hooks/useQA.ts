@@ -4,7 +4,7 @@ import { InputType, QAResponse } from "../types/qa";
 
 export default function useQA() {
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(null as string | null);
 
   const generateQA = async (
     type: InputType,
@@ -33,7 +33,9 @@ export default function useQA() {
       return data.result.questions as QAResponse[];
     } catch (err) {
       console.error("Error:", err);
-      setError(err);
+      setError(
+        "An error occurred while generating questions. Please try again later."
+      );
       return null;
     } finally {
       setIsLoading(false);
