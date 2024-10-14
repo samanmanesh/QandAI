@@ -7,8 +7,7 @@ import NextIcon from "@/app/assets/NextIcon";
 import PrevIcon from "@/app/assets/PrevIcon";
 import RotateIcon from "@/app/assets/RotateIcon";
 import { useRouter } from "next/navigation";
-import Card from "@/app/components/ui/Card";
-
+import QnACard from "@/app/components/ui/QnACard";
 
 export default function Page({ params }: { params: { id: string } }) {
   const { getQuestions, getUserAnswers, setUserAnswers, restedUserAnswers } =
@@ -69,7 +68,7 @@ export default function Page({ params }: { params: { id: string } }) {
           variants={variants}
           className="h-full rounded  xl:w-2/3 relative p-2"
         >
-          <Card
+          <QnACard
             question={questions[currentIndex]}
             onAnswer={handleAnswer}
             userAnswer={userAnswers?.find(
