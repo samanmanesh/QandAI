@@ -36,95 +36,112 @@ const QAPage = () => {
       return;
     }
 
-    const questions = await generateQA(inputType, inputValue);
-    //!tmp
-    // const questions = [
-    //   {
-    //     question: "What is the composition of the encoder?",
-    //     options: [
-    //       "The encoder is composed of 4 identical layers",
-    //       "The encoder is composed of 8 identical layers",
-    //       "The encoder is composed of 6 identical layers",
-    //       "The encoder is composed of 2 identical layers",
-    //     ],
-    //     answer: "The encoder is composed of 6 identical layers",
-    //   },
-    //   {
-    //     question: "What are the two sub-layers in each encoder layer?",
-    //     options: [
-    //       "Multi-head self-attention mechanism and a position-wise fully connected feed-forward network",
-    //       "Residual connection and layer normalization",
-    //       "Embedding layers and decoder sub-layers",
-    //       "Convolutional layers and pooling layers",
-    //     ],
-    //     answer:
-    //       "Multi-head self-attention mechanism and a position-wise fully connected feed-forward network",
-    //   },
-    //   {
-    //     question:
-    //       "What is the purpose of the residual connections and layer normalization in the model?",
-    //     options: [
-    //       "To facilitate the residual connections and ensure the outputs have the same dimension as the input",
-    //       "To improve the training speed and convergence of the model",
-    //       "To prevent overfitting and improve the model's generalization",
-    //       "All of the above",
-    //     ],
-    //     answer:
-    //       "To facilitate the residual connections and ensure the outputs have the same dimension as the input",
-    //   },
-    // ];
-    // const questions = [
-    //   {
-    //     question:
-    //       "What is the most common cosmetic deformity associated with zygomatic fractures?",
-    //     options: [
-    //       "Flattening of the malar eminence",
-    //       "Widening of the arch",
-    //       "Orbital dystopia",
-    //       "Enophthalmos",
-    //     ],
-    //     answer: "Flattening of the malar eminence",
-    //   },
-    //   {
-    //     question:
-    //       "What is the most common functional impairment caused by zygomatic arch fractures?",
-    //     options: [
-    //       "Impingement on the temporalis muscle",
-    //       "Obstruction of the coronoid process",
-    //       "Paresthesia of the trigeminal nerve",
-    //       "Diplopia",
-    //     ],
-    //     answer: "Impingement on the temporalis muscle",
-    //   },
-    //   {
-    //     question:
-    //       "Which of the following is a common neurological complication of zygomatic fractures?",
-    //     options: [
-    //       "Paresthesia of the first division of the trigeminal nerve",
-    //       "Dysesthesia of the second division of the trigeminal nerve",
-    //       "Paralysis of the facial nerve",
-    //       "Numbness of the mandibular nerve",
-    //     ],
-    //     answer: "Dysesthesia of the second division of the trigeminal nerve",
-    //   },
-    // ];
+    // const questions = await generateQA(inputType, inputValue);
+    // //!tmp
+    // // const questions = [
+    // //   {
+    // //     question: "What is the composition of the encoder?",
+    // //     options: [
+    // //       "The encoder is composed of 4 identical layers",
+    // //       "The encoder is composed of 8 identical layers",
+    // //       "The encoder is composed of 6 identical layers",
+    // //       "The encoder is composed of 2 identical layers",
+    // //     ],
+    // //     answer: "The encoder is composed of 6 identical layers",
+    // //   },
+    // //   {
+    // //     question: "What are the two sub-layers in each encoder layer?",
+    // //     options: [
+    // //       "Multi-head self-attention mechanism and a position-wise fully connected feed-forward network",
+    // //       "Residual connection and layer normalization",
+    // //       "Embedding layers and decoder sub-layers",
+    // //       "Convolutional layers and pooling layers",
+    // //     ],
+    // //     answer:
+    // //       "Multi-head self-attention mechanism and a position-wise fully connected feed-forward network",
+    // //   },
+    // //   {
+    // //     question:
+    // //       "What is the purpose of the residual connections and layer normalization in the model?",
+    // //     options: [
+    // //       "To facilitate the residual connections and ensure the outputs have the same dimension as the input",
+    // //       "To improve the training speed and convergence of the model",
+    // //       "To prevent overfitting and improve the model's generalization",
+    // //       "All of the above",
+    // //     ],
+    // //     answer:
+    // //       "To facilitate the residual connections and ensure the outputs have the same dimension as the input",
+    // //   },
+    // // ];
+    // // const questions = [
+    // //   {
+    // //     question:
+    // //       "What is the most common cosmetic deformity associated with zygomatic fractures?",
+    // //     options: [
+    // //       "Flattening of the malar eminence",
+    // //       "Widening of the arch",
+    // //       "Orbital dystopia",
+    // //       "Enophthalmos",
+    // //     ],
+    // //     answer: "Flattening of the malar eminence",
+    // //   },
+    // //   {
+    // //     question:
+    // //       "What is the most common functional impairment caused by zygomatic arch fractures?",
+    // //     options: [
+    // //       "Impingement on the temporalis muscle",
+    // //       "Obstruction of the coronoid process",
+    // //       "Paresthesia of the trigeminal nerve",
+    // //       "Diplopia",
+    // //     ],
+    // //     answer: "Impingement on the temporalis muscle",
+    // //   },
+    // //   {
+    // //     question:
+    // //       "Which of the following is a common neurological complication of zygomatic fractures?",
+    // //     options: [
+    // //       "Paresthesia of the first division of the trigeminal nerve",
+    // //       "Dysesthesia of the second division of the trigeminal nerve",
+    // //       "Paralysis of the facial nerve",
+    // //       "Numbness of the mandibular nerve",
+    // //     ],
+    // //     answer: "Dysesthesia of the second division of the trigeminal nerve",
+    // //   },
+    // // ];
 
-    console.log("Questions:", questions);
+    // console.log("Questions:", questions);
 
-    if (!isLoading && !error) setInputValue("");
+    // if (!isLoading && !error) setInputValue("");
 
-    if (!questions) {
-      setCustomError(
-        "An error occurred while generating questions. Please try again later."
-      );
-      return;
+    // if (!questions) {
+    //   setCustomError(
+    //     "An error occurred while generating questions. Please try again later."
+    //   );
+    //   return;
+    // }
+
+    // //generate id
+    // const id = generateId();
+    // // set questions in store
+    // setStoreQuestions(id, questions);
+    // router.push(`/qa/${id}`);
+
+    try {
+      const questions = await generateQA(inputType, inputValue);
+      
+      if (!questions || questions.length === 0) {
+        throw new Error("No questions were generated");
+      }
+
+      const id = generateId();
+      setStoreQuestions(id, questions);
+      router.push(`/qa/${id}`);
+    } catch (error) {
+      console.error("Error generating questions:", error);
+      setCustomError("An error occurred while generating questions. Please try again later.");
+    } finally {
+      setInputValue("");
     }
-
-    //generate id
-    const id = generateId();
-    // set questions in store
-    setStoreQuestions(id, questions);
-    router.push(`/qa/${id}`);
   };
 
   return (
