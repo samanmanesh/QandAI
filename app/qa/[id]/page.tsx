@@ -75,7 +75,7 @@ export default function Page({ params }: { params: { id: string } }) {
               (ua) => ua.questionId === questions[currentIndex].question
             )}
           />
-          <div className="absolute bottom-6 right-8 font-medium text-lg tracking-wide font-serif  ">
+          <div className="absolute bottom-6 right-8 font-medium text-lg tracking-wide font-inter  ">
             {currentIndex + 1}/{questions.length}
           </div>
         </motion.div>

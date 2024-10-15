@@ -63,7 +63,7 @@ const Sidebar = () => {
               onClick={handleOnClick}
             >
               <ReturnIcon />
-              <text className="max-w-20  font-bold">
+              <text className="max-w-20  font-medium">
                 Return to generation page
               </text>
             </Link>

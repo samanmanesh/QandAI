@@ -21,11 +21,12 @@ const Input = ({ clicked, onClick, className, disabled }: Props) => {
     onClick(); // Trigger the parent onClick action
   };
 
+  //clicked ? "bg-[#2B2B2B]" : "bg-[#DDDDDD]"
   return (
     <motion.div
       className={cn(
-        `w-4 h-4 md:w-6 md:h-6 rounded md:rounded-md flex flex-shrink-0 items-center justify-center ${
-          clicked ? "bg-[#2B2B2B]" : "bg-[#DDDDDD]"
+        `w-4 h-4 md:w-5 md:h-5 rounded md:rounded-md flex flex-shrink-0 items-center justify-center ${
+          clicked ? "bg-[#2B2B2B]" : "bg-white shadow-sm border"
         }`,
         className
       )}

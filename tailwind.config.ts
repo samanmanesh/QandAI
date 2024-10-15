@@ -10,6 +10,7 @@ const config: Config = {
     fontFamily: {
       sans: ["ui-sans-serif", "system-ui"],
       serif: ["ui-serif", "Inter", "Georgia"],
+      inter: ["Inter", "ui-sans-serif"],
     },
     extend: {
       animation: {
