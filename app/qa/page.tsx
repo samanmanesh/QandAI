@@ -36,7 +36,7 @@ const QAPage = () => {
       return;
     }
 
-    const questions = await generateQA(inputType, inputValue);
+    // const questions = await generateQA(inputType, inputValue);
     //!tmp
     // const questions = [
     //   {
@@ -73,41 +73,41 @@ const QAPage = () => {
     //       "To facilitate the residual connections and ensure the outputs have the same dimension as the input",
     //   },
     // ];
-    // const questions = [
-    //   {
-    //     question:
-    //       "What is the most common cosmetic deformity associated with zygomatic fractures?",
-    //     options: [
-    //       "Flattening of the malar eminence",
-    //       "Widening of the arch",
-    //       "Orbital dystopia",
-    //       "Enophthalmos",
-    //     ],
-    //     answer: "Flattening of the malar eminence",
-    //   },
-    //   {
-    //     question:
-    //       "What is the most common functional impairment caused by zygomatic arch fractures?",
-    //     options: [
-    //       "Impingement on the temporalis muscle",
-    //       "Obstruction of the coronoid process",
-    //       "Paresthesia of the trigeminal nerve",
-    //       "Diplopia",
-    //     ],
-    //     answer: "Impingement on the temporalis muscle",
-    //   },
-    //   {
-    //     question:
-    //       "Which of the following is a common neurological complication of zygomatic fractures?",
-    //     options: [
-    //       "Paresthesia of the first division of the trigeminal nerve",
-    //       "Dysesthesia of the second division of the trigeminal nerve",
-    //       "Paralysis of the facial nerve",
-    //       "Numbness of the mandibular nerve",
-    //     ],
-    //     answer: "Dysesthesia of the second division of the trigeminal nerve",
-    //   },
-    // ];
+    const questions = [
+      {
+        question:
+          "What is the most common cosmetic deformity associated with zygomatic fractures?",
+        options: [
+          "Flattening of the malar eminence",
+          "Widening of the arch",
+          "Orbital dystopia",
+          "Enophthalmos",
+        ],
+        answer: "Flattening of the malar eminence",
+      },
+      {
+        question:
+          "What is the most common functional impairment caused by zygomatic arch fractures?",
+        options: [
+          "Impingement on the temporalis muscle",
+          "Obstruction of the coronoid process",
+          "Paresthesia of the trigeminal nerve",
+          "Diplopia",
+        ],
+        answer: "Impingement on the temporalis muscle",
+      },
+      {
+        question:
+          "Which of the following is a common neurological complication of zygomatic fractures?",
+        options: [
+          "Paresthesia of the first division of the trigeminal nerve",
+          "Dysesthesia of the second division of the trigeminal nerve",
+          "Paralysis of the facial nerve",
+          "Numbness of the mandibular nerve",
+        ],
+        answer: "Dysesthesia of the second division of the trigeminal nerve",
+      },
+    ];
 
     console.log("Questions:", questions);
 
@@ -167,15 +167,15 @@ const QAPage = () => {
           <Button
             type="generate"
             onClick={handleSubmit}
-            className={`md:mt-10 self-center w-full group hover:gap-1 transition  duration-100 ease-in-out ${
+            className={`md:mt-8 self-center w-full group  transition  duration-100 ease-in-out ${
               isLoading && "bg-[#282232]"
             }`}
             icon={
-              !isLoading && <MagicIcon className="group-hover:scale-95 w-5 " />
+              !isLoading && <MagicIcon className=" w-5 fill-white group-hover:fill-indigo-200 " />
             }
           >
             {!isLoading && !error && (
-              <span className="group-hover:scale-95">Generate</span>
+              <span className="group-hover:text-indigo-200">Generate</span>
             )}
             {isLoading && (
               <svg

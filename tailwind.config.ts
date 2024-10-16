@@ -15,7 +15,7 @@ const config: Config = {
     extend: {
       animation: {
         spotlight: "spotlight 2s ease .75s 1 forwards",
-        blob: "blob 6s ease-in-out infinite",
+        blob: "blob 8s ease-in-out infinite",
       },
       keyframes: {
         spotlight: {
@@ -30,7 +30,7 @@ const config: Config = {
         },
         blob: {
           "0%": {
-            transform: "translate(0px, 0px) scale(1)",
+            transform: "translate(0px, 0px) scale(1) ",
           },
           "33%": {
             transform: "translate(30px, -50px) scale(1.1)",
