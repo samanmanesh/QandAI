@@ -36,43 +36,43 @@ const QAPage = () => {
       return;
     }
 
-    // const questions = await generateQA(inputType, inputValue);
+    const questions = await generateQA(inputType, inputValue);
     //!tmp
-    const questions = [
-      {
-        question: "What is the composition of the encoder?",
-        options: [
-          "The encoder is composed of 4 identical layers",
-          "The encoder is composed of 8 identical layers",
-          "The encoder is composed of 6 identical layers",
-          "The encoder is composed of 2 identical layers",
-        ],
-        answer: "The encoder is composed of 6 identical layers",
-      },
-      {
-        question: "What are the two sub-layers in each encoder layer?",
-        options: [
-          "Multi-head self-attention mechanism and a position-wise fully connected feed-forward network",
-          "Residual connection and layer normalization",
-          "Embedding layers and decoder sub-layers",
-          "Convolutional layers and pooling layers",
-        ],
-        answer:
-          "Multi-head self-attention mechanism and a position-wise fully connected feed-forward network",
-      },
-      {
-        question:
-          "What is the purpose of the residual connections and layer normalization in the model?",
-        options: [
-          "To facilitate the residual connections and ensure the outputs have the same dimension as the input",
-          "To improve the training speed and convergence of the model",
-          "To prevent overfitting and improve the model's generalization",
-          "All of the above",
-        ],
-        answer:
-          "To facilitate the residual connections and ensure the outputs have the same dimension as the input",
-      },
-    ];
+    // const questions = [
+    //   {
+    //     question: "What is the composition of the encoder?",
+    //     options: [
+    //       "The encoder is composed of 4 identical layers",
+    //       "The encoder is composed of 8 identical layers",
+    //       "The encoder is composed of 6 identical layers",
+    //       "The encoder is composed of 2 identical layers",
+    //     ],
+    //     answer: "The encoder is composed of 6 identical layers",
+    //   },
+    //   {
+    //     question: "What are the two sub-layers in each encoder layer?",
+    //     options: [
+    //       "Multi-head self-attention mechanism and a position-wise fully connected feed-forward network",
+    //       "Residual connection and layer normalization",
+    //       "Embedding layers and decoder sub-layers",
+    //       "Convolutional layers and pooling layers",
+    //     ],
+    //     answer:
+    //       "Multi-head self-attention mechanism and a position-wise fully connected feed-forward network",
+    //   },
+    //   {
+    //     question:
+    //       "What is the purpose of the residual connections and layer normalization in the model?",
+    //     options: [
+    //       "To facilitate the residual connections and ensure the outputs have the same dimension as the input",
+    //       "To improve the training speed and convergence of the model",
+    //       "To prevent overfitting and improve the model's generalization",
+    //       "All of the above",
+    //     ],
+    //     answer:
+    //       "To facilitate the residual connections and ensure the outputs have the same dimension as the input",
+    //   },
+    // ];
     // const questions = [
     //   {
     //     question:
