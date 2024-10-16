@@ -9,7 +9,6 @@ interface BlobBackgroundProps extends React.HTMLProps<HTMLDivElement> {
 export const BlobBackground = ({
   className,
   children,
-  showRadialGradient = true,
   ...props
 }: BlobBackgroundProps) => {
   return (
