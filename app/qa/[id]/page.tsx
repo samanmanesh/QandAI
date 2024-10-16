@@ -66,7 +66,7 @@ export default function Page({ params }: { params: { id: string } }) {
           animate="center"
           exit="exit"
           variants={variants}
-          className="h-full rounded  xl:w-2/3 relative p-2"
+          className="h-full rounded  xl:w-[65%] relative p-2"
         >
           <QnACard
             question={questions[currentIndex]}
@@ -75,7 +75,7 @@ export default function Page({ params }: { params: { id: string } }) {
               (ua) => ua.questionId === questions[currentIndex].question
             )}
           />
-          <div className="absolute bottom-6 right-8 font-medium text-lg tracking-wide font-inter  ">
+          <div className="absolute bottom-6 right-8 font-medium text-base tracking-wide font-inter  ">
             {currentIndex + 1}/{questions.length}
           </div>
         </motion.div>

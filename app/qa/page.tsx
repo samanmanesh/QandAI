@@ -129,6 +129,7 @@ const QAPage = () => {
 
   return (
     <BlobBackground className=" h-full w-full lg:w-2/4 flex flex-col gap-3 justify-center items-center">
+    
       <div className="relative min-w-12 flex flex-col gap-6 w-[85%] ">
         <section className="flex flex-col gap-1">
           <motion.h1
@@ -138,7 +139,7 @@ const QAPage = () => {
             transition={{ duration: 0.3, delay: 0.1 }}
           >
             Welcome to
-            <span className="text-4xl font-semibold font-serif"> Q&AI, </span>
+            <span className="text-4xl font-semibold font-inter"> Q&AI, </span>
           </motion.h1>
           <motion.p
             className="text-2xl font-medium text-neutral-900 text-left"

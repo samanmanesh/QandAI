@@ -31,6 +31,7 @@ const Textarea = ({ value, onChange, notification }: TextareaProps) => {
       }
     };
   }, []);
+  //border border-neutral-300
 
   return (
     <motion.div className="relative rounded-xl overflow-hidden">
@@ -39,7 +40,7 @@ const Textarea = ({ value, onChange, notification }: TextareaProps) => {
         <motion.div
           initial={{ opacity: 0, filter: "blur(10px)" }}
           animate={{ opacity: 1, filter: "blur(0px)" }}
-          className="absolute top-0 left-0 right-0 h-8 bg-gradient-to-b from-white/90 to-white/5   blur-3xl z-10"
+          className="absolute top-0 left-0 right-0 h-8 bg-gradient-to-b from-white/90 to-white/5    z-10"
         >
           {/* Nav content can go here if needed */}
         </motion.div>
@@ -53,7 +54,8 @@ const Textarea = ({ value, onChange, notification }: TextareaProps) => {
         transition={{ duration: 0.7, delay: 0.1 }}
       >
         <textarea
-          className=" w-full aspect-[16/7] resize-none rounded-xl overflow-auto outline-none p-4   border border-neutral-300 text-base font-medium tracking-wide custom-scrollbar shadow-sm"
+          // className=" w-full aspect-[16/7] resize-none rounded-xl overflow-auto outline-none p-4    text-base font-medium tracking-wide custom-scrollbar shadow-sm bg-gradient-to-tr from-[#4d4d4d] from-30%  via-[#3b3b3bf3] via-50% to-[#b3b2b2f5] to-95%  text-white "
+          className=" w-full aspect-[16/7] resize-none rounded-xl overflow-auto outline-none p-4    text-base font-medium tracking-wide custom-scrollbar  bg-gradient-to-br from-[#f4f3f3]  via-[#ffffff] to-[#f2f1f1] shadow-sm"
           placeholder="Enter or paste your text here...  "
           onChange={(e) => {
             onChange(e.target.value);

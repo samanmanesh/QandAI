@@ -42,7 +42,7 @@ const Sidebar = () => {
         </Link>
         {showSidebar && (
           <motion.div
-            className="w-fit mt-60 mx-auto "
+            className="w-fit mt-60 mx-auto group "
             initial={{ opacity: 0, x: -50, filter: "blur(6px)" }}
             animate={{
               opacity: 1,
@@ -57,12 +57,12 @@ const Sidebar = () => {
           >
             <Link
               href="/qa"
-              className={`flex gap-2 text-base font-medium hover:opacity-75 transform transition-all 
+              className={`flex gap-2 text-base font-medium group-hover:opacity-60  transition-all duration-100 ease-in-out
                 ${clicked ? "scale-95" : "scale-100"} 
                 `}
               onClick={handleOnClick}
             >
-              <ReturnIcon />
+              <ReturnIcon  className="group-hover:-translate-x-2"/>
               <text className="max-w-20  font-medium">
                 Return to generation page
               </text>
