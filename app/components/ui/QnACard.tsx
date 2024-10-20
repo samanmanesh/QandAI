@@ -41,9 +41,10 @@ const QnACard = ({ question, onAnswer, userAnswer }: QuestionAnswerProps) => {
     }
   }, [userAnswer]);
   // border border-neutral-300
+  //overflow-auto
   return (
     <motion.div
-      className="h-full overflow-auto px-6 py-8 md:px-8 md:py-10 lg:px-10 lg:py-12 space-y-4 flex flex-col justify-between rounded-xl flex-grow-0 bg-gradient-to-br from-[#f4f3f3]  via-[#ffffff] to-[#f2f1f1]"
+      className="h-full px-6 py-8 md:px-8 md:py-10 lg:px-10 lg:py-12 space-y-4 flex flex-col justify-between rounded-xl flex-grow-0 bg-gradient-to-br from-[#f4f3f3]  via-[#ffffff] to-[#f2f1f1]"
       initial="hidden"
       animate="visible"
       exit="hidden"

@@ -36,43 +36,65 @@ const QAPage = () => {
       return;
     }
 
-    // const questions = await generateQA(inputType, inputValue);
+    const questions = await generateQA(inputType, inputValue);
     //!tmp
-    const questions = [
-      {
-        question: "What is the composition of the encoder?",
-        options: [
-          "The encoder is composed of 4 identical layers",
-          "The encoder is composed of 8 identical layers",
-          "The encoder is composed of 6 identical layers",
-          "The encoder is composed of 2 identical layers",
-        ],
-        answer: "The encoder is composed of 6 identical layers",
-      },
-      {
-        question: "What are the two sub-layers in each encoder layer?",
-        options: [
-          "Multi-head self-attention mechanism and a position-wise fully connected feed-forward network",
-          "Residual connection and layer normalization",
-          "Embedding layers and decoder sub-layers",
-          "Convolutional layers and pooling layers",
-        ],
-        answer:
-          "Multi-head self-attention mechanism and a position-wise fully connected feed-forward network",
-      },
-      {
-        question:
-          "What is the purpose of the residual connections and layer normalization in the model?",
-        options: [
-          "To facilitate the residual connections and ensure the outputs have the same dimension as the input",
-          "To improve the training speed and convergence of the model",
-          "To prevent overfitting and improve the model's generalization",
-          "All of the above",
-        ],
-        answer:
-          "To facilitate the residual connections and ensure the outputs have the same dimension as the input",
-      },
-    ];
+    // const questions = [
+    //   {
+    //     question: "What is the composition of the encoder?",
+    //     options: [
+    //       "The encoder is composed of 4 identical layers",
+    //       "The encoder is composed of 8 identical layers",
+    //       "The encoder is composed of 6 identical layers",
+    //       "The encoder is composed of 2 identical layers",
+    //     ],
+    //     answer: "The encoder is composed of 6 identical layers",
+    //   },
+    //   {
+    //     question: "What are the two sub-layers in each encoder layer?",
+    //     options: [
+    //       "Multi-head self-attention mechanism and a position-wise fully connected feed-forward network",
+    //       "Residual connection and layer normalization",
+    //       "Embedding layers and decoder sub-layers",
+    //       "Convolutional layers and pooling layers",
+    //     ],
+    //     answer:
+    //       "Multi-head self-attention mechanism and a position-wise fully connected feed-forward network",
+    //   },
+    //   {
+    //     question:
+    //       "What is the purpose of the residual connections and layer normalization in the model?",
+    //     options: [
+    //       "To facilitate the residual connections and ensure the outputs have the same dimension as the input",
+    //       "To improve the training speed and convergence of the model",
+    //       "To prevent overfitting and improve the model's generalization",
+    //       "All of the above",
+    //     ],
+    //     answer:
+    //       "To facilitate the residual connections and ensure the outputs have the same dimension as the input",
+    //   },
+    //   {
+    //     question:
+    //       "What is the most common cosmetic deformity associated with zygomatic fractures?",
+    //     options: [
+    //       "Flattening of the malar eminence",
+    //       "Widening of the arch",
+    //       "Orbital dystopia",
+    //       "Enophthalmos",
+    //     ],
+    //     answer: "Flattening of the malar eminence",
+    //   },
+    //   {
+    //     question:
+    //       "What is the most common functional impairment caused by zygomatic arch fractures?",
+    //     options: [
+    //       "Impingement on the temporalis muscle",
+    //       "Obstruction of the coronoid process",
+    //       "Paresthesia of the trigeminal nerve",
+    //       "Diplopia",
+    //     ],
+    //     answer: "Impingement on the temporalis muscle",
+    //   },
+    // ];
     // const questions = [
     //   {
     //     question:
@@ -129,7 +151,6 @@ const QAPage = () => {
 
   return (
     <BlobBackground className=" h-full w-full lg:w-2/4 flex flex-col gap-3 justify-center items-center">
-    
       <div className="relative min-w-12 flex flex-col gap-6 w-[85%] ">
         <section className="flex flex-col gap-1">
           <motion.h1
@@ -171,7 +192,9 @@ const QAPage = () => {
               isLoading && "bg-[#282232]"
             }`}
             icon={
-              !isLoading && <MagicIcon className=" w-5 fill-white group-hover:fill-indigo-200 " />
+              !isLoading && (
+                <MagicIcon className=" w-5 fill-white group-hover:fill-indigo-200 " />
+              )
             }
           >
             {!isLoading && !error && (
