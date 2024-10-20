@@ -17,6 +17,25 @@ export default function Page({ params }: { params: { id: string } }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const router = useRouter();
 
+  const [screenHeight, setScreenHeight] = useState(
+    typeof window !== "undefined" ? window.innerHeight : 0
+  );
+
+  // Update screen height on window resize
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenHeight(window.innerHeight);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+
   if (!questions) {
     // push user back to generation page if no questions are found
     return router.push("/qa");
@@ -56,24 +75,7 @@ export default function Page({ params }: { params: { id: string } }) {
       transition: { duration: 0.5, delay: 0.1, ease: "easeInOut" },
     },
   };
-  const [screenHeight, setScreenHeight] = useState(
-    typeof window !== "undefined" ? window.innerHeight : 0
-  );
-
-  // Update screen height on window resize
-  useEffect(() => {
-    const handleResize = () => {
-      setScreenHeight(window.innerHeight);
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    // Clean up the event listener on component unmount
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
+  
   return (
     <div className="relative h-full w-full md:w-2/4 flex flex-col gap-8 items-center justify-center">
       <div className="w-full h-full flex flex-col items-center justify-around ">
