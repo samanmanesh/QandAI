@@ -142,7 +142,7 @@ export default function Page({ params }: { params: { id: string } }) {
             />
           </div>
 
-          <div className="w-0.5 rounded  bg-gray-50/40 " />
+          <div className="w-0.5 rounded  bg-gray-50/10 " />
 
           <button
             className="text-white transform transition-all hover:scale-90   disabled:hover:scale-100 disabled:opacity-50"
@@ -152,7 +152,7 @@ export default function Page({ params }: { params: { id: string } }) {
             <RotateIcon className="stroke-current" />
           </button>
 
-          <div className="w-0.5 rounded  bg-gray-50/40 " />
+          <div className="w-0.5 rounded  bg-gray-50/10 " />
 
           <div
             className="flex gap-2  rounded-full  px-1 w-1/3"
